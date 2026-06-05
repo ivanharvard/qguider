@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, Field
 
 import enum
 
 class ResponseRate(BaseModel):
     responded: int
     invited: int
-    response_ratio: int
+    response_ratio: float
 
 class Chart(BaseModel):
     path: str
@@ -33,6 +32,8 @@ class CourseFeedback(BaseModel):
 
 class InstructorFeedback(BaseModel):
     chart: Chart
+    instructor: str
+
     overall: LikertDistribution
     effective_lectures: LikertDistribution
     accessible_outside_class: LikertDistribution
@@ -41,13 +42,16 @@ class InstructorFeedback(BaseModel):
     useful_feedback: LikertDistribution
     returned_assignments_timely: LikertDistribution
 
-class HoursPerWeek(BaseModel):
-    chart: Chart
-    responses: int
-    response_ratio: int
+class SummaryStatistics(BaseModel):
+    response_ratio: float
     mean: float
     median: float
     stddev: float
+
+class HoursPerWeek(BaseModel):
+    chart: Chart
+    responses: int
+    summary_stats: SummaryStatistics
 
 class ScoreDistribution(BaseModel):
     score: int
@@ -62,10 +66,7 @@ class RecommendationStrength(BaseModel):
     unlikely: ScoreDistribution
     definitely_not: ScoreDistribution
 
-    response_ratio: int
-    mean: float
-    median: float
-    stddev: float
+    summary_stats: SummaryStatistics
 
 class ReasonsForEnrollment(BaseModel):
     elective: int
@@ -78,7 +79,7 @@ class ReasonsForEnrollment(BaseModel):
     divisional_dist: int
     quantitative_reasoning: int
 
-class MostStudentsOpenMinded(BaseModel):
+class AgreementDistribution(BaseModel):
     chart: Chart
 
     strongly_agree: ScoreDistribution
@@ -87,33 +88,16 @@ class MostStudentsOpenMinded(BaseModel):
     disagree: ScoreDistribution
     strongly_disagree: ScoreDistribution
 
-    response_ratio: int
-    mean: float
-    median: float
-    stddev: float
-
-class ComfortableExpressingViews(BaseModel):
-    chart: Chart
-
-    strongly_agree: ScoreDistribution
-    agree: ScoreDistribution
-    neither: ScoreDistribution
-    disagree: ScoreDistribution
-    strongly_disagree: ScoreDistribution
-
-    response_ratio: int
-    mean: float
-    median: float
-    stddev: float
+    summary_stats: SummaryStatistics
 
 class Comment(BaseModel):
     text: str
 
-class Season(enum.Enum):
-    Winter = "Winter"
-    Spring = "Spring"
-    Summer = "Summer"
-    Fall = "Fall"
+class Season(str, enum.Enum):
+    winter = "Winter"
+    spring = "Spring"
+    summer = "Summer"
+    fall = "Fall"
 
 class Semester(BaseModel):
     season: Season
@@ -121,9 +105,9 @@ class Semester(BaseModel):
 
 class Course(BaseModel):
     title: str
-    department: str
+    subject: str
     number: str
-    instructor: str
+    instructors: list[str] = Field(default_factory=list)
     semester: Semester
 
 class QGuide(BaseModel):
@@ -134,6 +118,6 @@ class QGuide(BaseModel):
     hours_per_week: HoursPerWeek
     recommendation_strength: RecommendationStrength
     reasons_for_enrollment: ReasonsForEnrollment
-    most_students_open_minded: MostStudentsOpenMinded
-    comfortable_expressing_views: ComfortableExpressingViews
-    comments: list[Comment]
+    most_students_open_minded: AgreementDistribution
+    comfortable_expressing_views: AgreementDistribution 
+    comments: list[Comment] = Field(default_factory=list)
