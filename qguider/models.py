@@ -14,11 +14,11 @@ class Chart(BaseModel):
 
 class LikertDistribution(BaseModel):
     count: int
-    excellent: int
-    very_good: int
-    good: int
-    fair: int
-    unsatisfactory: int
+    excellent: float
+    very_good: float
+    good: float
+    fair: float
+    unsatisfactory: float
     course_mean: float
     fas_mean: float
 
@@ -56,7 +56,7 @@ class HoursPerWeek(BaseModel):
 class ScoreDistribution(BaseModel):
     score: int
     count: int
-    percentage: int
+    percentage: float
 
 class RecommendationStrength(BaseModel):
     chart: Chart
