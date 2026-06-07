@@ -121,26 +121,28 @@ class Parser:
         )
     
     def _report_block(self, title_contains: str) -> Tag:
-        header = self.soup.find(
-            ["h3", "h4"],
-            string=lambda s: s and title_contains in _clean(s),
-        )
+        title_contains = _clean(title_contains).lower()
 
-        if not header:
-            # fallback: h3/h4 text often lives in child <span>
-            header = self.soup.find(
-                ["h3", "h4"],
-                lambda tag: title_contains in _clean(tag.get_text(" ", strip=True)),
-            )
+        for header in self.soup.find_all(["h3", "h4"]):
+            header_text = _clean(header.get_text(" ", strip=True)).lower()
 
-        if not header:
-            raise ParseError(f"Could not find report block: {title_contains}")
+            if title_contains in header_text:
+                block = header.find_parent("div", class_="report-block")
 
-        block = header.find_parent("div", class_="report-block")
-        if not block:
-            raise ParseError(f"Could not find parent report block for: {title_contains}")
+                if not block:
+                    raise ParseError(
+                        f"Could not find parent report block for: {title_contains}"
+                    )
 
-        return block
+                return block
+
+        raise ParseError(f"Could not find report block: {title_contains}")
+    
+    def _maybe_report_block(self, title_contains: str) -> Tag | None:
+        try:
+            return self._report_block(title_contains)
+        except ParseError:
+            return None
 
     def _likert_from_row(self, row: Tag) -> LikertDistribution:
         cells = [_clean(c.get_text(" ", strip=True)) for c in row.find_all(["th", "td"])]
@@ -221,8 +223,11 @@ class Parser:
         )
 
     def get_instructor_feedback(self) -> InstructorFeedback:
-        chart_block = self._report_block("Instructor Feedback for")
-        table_block = self._report_block("General Instructor Questions")
+        chart_block = self._maybe_report_block("Instructor Feedback for")
+        table_block = self._maybe_report_block("General Instructor Questions")
+
+        if chart_block is None or table_block is None:
+            return None
 
         rows = self._likert_rows_by_question(table_block)
 

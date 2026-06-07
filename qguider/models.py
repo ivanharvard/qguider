@@ -114,7 +114,7 @@ class QGuide(BaseModel):
     course: Course
     response_rate: ResponseRate
     course_feedback: CourseFeedback
-    instructor_feedback: InstructorFeedback
+    instructor_feedback: InstructorFeedback | None
     hours_per_week: HoursPerWeek
     recommendation_strength: RecommendationStrength
     reasons_for_enrollment: ReasonsForEnrollment

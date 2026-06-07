@@ -1,0 +1,223 @@
+{
+  "course": {
+    "title": "ZULU AA",
+    "subject": "ZULU",
+    "number": "AA",
+    "instructors": [
+      "John Mugane"
+    ],
+    "semester": {
+      "season": "Fall",
+      "year": 2025
+    }
+  },
+  "response_rate": {
+    "responded": 25,
+    "invited": 43,
+    "response_ratio": 0.58
+  },
+  "course_feedback": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20ZULU%20AA%20-%20John%20Mugane%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_77fb7075-7bbe-4885-80c5-8efaf0711479.png"
+    },
+    "overall": {
+      "count": 17,
+      "excellent": 0.94,
+      "very_good": 0.0,
+      "good": 0.0,
+      "fair": 0.06,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.82,
+      "fas_mean": 4.21
+    },
+    "materials": {
+      "count": 17,
+      "excellent": 0.71,
+      "very_good": 0.18,
+      "good": 0.0,
+      "fair": 0.12,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.47,
+      "fas_mean": 4.21
+    },
+    "assignments": {
+      "count": 17,
+      "excellent": 0.71,
+      "very_good": 0.18,
+      "good": 0.0,
+      "fair": 0.06,
+      "unsatisfactory": 0.06,
+      "course_mean": 4.41,
+      "fas_mean": 4.07
+    },
+    "feedback": {
+      "count": 17,
+      "excellent": 0.76,
+      "very_good": 0.12,
+      "good": 0.06,
+      "fair": 0.06,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.59,
+      "fas_mean": 4.06
+    },
+    "section": {
+      "count": 7,
+      "excellent": 0.86,
+      "very_good": 0.0,
+      "good": 0.14,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.71,
+      "fas_mean": 4.24
+    }
+  },
+  "instructor_feedback": null,
+  "hours_per_week": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20ZULU%20AA%20-%20John%20Mugane%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_93cbf675-338c-4405-beed-7e1373866861.png"
+    },
+    "responses": 17,
+    "summary_stats": {
+      "response_ratio": 0.4,
+      "mean": 4.82,
+      "median": 4.0,
+      "stddev": 3.36
+    }
+  },
+  "recommendation_strength": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20ZULU%20AA%20-%20John%20Mugane%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_53cf8c1c-a1c0-410e-a3f8-5419a2f9dc74.png"
+    },
+    "with_enthusiasm": {
+      "score": 5,
+      "count": 15,
+      "percentage": 0.88
+    },
+    "likely": {
+      "score": 4,
+      "count": 1,
+      "percentage": 0.06
+    },
+    "with_reservations": {
+      "score": 3,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "unlikely": {
+      "score": 2,
+      "count": 1,
+      "percentage": 0.06
+    },
+    "definitely_not": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.4,
+      "mean": 4.76,
+      "median": 5.0,
+      "stddev": 0.75
+    }
+  },
+  "reasons_for_enrollment": {
+    "elective": 1,
+    "concentration_or_dept": 0,
+    "secondary_or_lang_citation": 1,
+    "gened": 0,
+    "expos": 0,
+    "foreign_lang": 15,
+    "pre_med": 0,
+    "divisional_dist": 0,
+    "quantitative_reasoning": 0
+  },
+  "most_students_open_minded": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20ZULU%20AA%20-%20John%20Mugane%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_58a89799-ac34-492e-8cfa-98135f2efdd3.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 14,
+      "percentage": 0.88
+    },
+    "agree": {
+      "score": 4,
+      "count": 1,
+      "percentage": 0.06
+    },
+    "neither": {
+      "score": 3,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "disagree": {
+      "score": 2,
+      "count": 1,
+      "percentage": 0.06
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.37,
+      "mean": 4.75,
+      "median": 5.0,
+      "stddev": 0.77
+    }
+  },
+  "comfortable_expressing_views": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20ZULU%20AA%20-%20John%20Mugane%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_73b329fa-bf58-45ab-8122-e78672bf4dda.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 11,
+      "percentage": 0.92
+    },
+    "agree": {
+      "score": 4,
+      "count": 1,
+      "percentage": 0.08
+    },
+    "neither": {
+      "score": 3,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "disagree": {
+      "score": 2,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.28,
+      "mean": 4.92,
+      "median": 5.0,
+      "stddev": 0.29
+    }
+  },
+  "comments": [
+    {
+      "text": "Take!"
+    },
+    {
+      "text": "Make sure you get Ntuli as your teacher."
+    },
+    {
+      "text": "TAKE THIS COURSE. Ntuli is one of the best teacher's I've ever had in my career. She is so caring and has changed the way I see teaching. She is one of the best teachers!!!!! Take this!!!!!!"
+    },
+    {
+      "text": "Ntuli is amazing and makes me want to stay engaged in the material and be willing to learn even if you are unsure what the answer is. The language and culture are interesting to learn."
+    },
+    {
+      "text": "This is the best way to meet your foreign language requirement! Initially, I was worried about taking a challenging language like Zulu, but Ntuli is just incredible. She will walk you through numerous examples until you understand. She has great humor and care for her students."
+    }
+  ]
+}

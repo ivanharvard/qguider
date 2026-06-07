@@ -1,0 +1,715 @@
+{
+  "course": {
+    "title": "COMPSCI 50",
+    "subject": "COMPSCI",
+    "number": "50",
+    "instructors": [
+      "Kelly Ding"
+    ],
+    "semester": {
+      "season": "Fall",
+      "year": 2025
+    }
+  },
+  "response_rate": {
+    "responded": 284,
+    "invited": 339,
+    "response_ratio": 0.84
+  },
+  "course_feedback": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_8c0bbbb6-d7b8-46a5-a825-99a527d26cae.png"
+    },
+    "overall": {
+      "count": 258,
+      "excellent": 0.2,
+      "very_good": 0.36,
+      "good": 0.26,
+      "fair": 0.14,
+      "unsatisfactory": 0.05,
+      "course_mean": 3.53,
+      "fas_mean": 4.21
+    },
+    "materials": {
+      "count": 249,
+      "excellent": 0.38,
+      "very_good": 0.35,
+      "good": 0.17,
+      "fair": 0.09,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.02,
+      "fas_mean": 4.21
+    },
+    "assignments": {
+      "count": 255,
+      "excellent": 0.17,
+      "very_good": 0.35,
+      "good": 0.27,
+      "fair": 0.18,
+      "unsatisfactory": 0.04,
+      "course_mean": 3.44,
+      "fas_mean": 4.07
+    },
+    "feedback": {
+      "count": 253,
+      "excellent": 0.25,
+      "very_good": 0.25,
+      "good": 0.26,
+      "fair": 0.18,
+      "unsatisfactory": 0.06,
+      "course_mean": 3.44,
+      "fas_mean": 4.06
+    },
+    "section": {
+      "count": 255,
+      "excellent": 0.44,
+      "very_good": 0.26,
+      "good": 0.18,
+      "fair": 0.08,
+      "unsatisfactory": 0.04,
+      "course_mean": 3.99,
+      "fas_mean": 4.24
+    }
+  },
+  "instructor_feedback": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_4b169c29-614f-490a-a901-8b02b2f1707b.png"
+    },
+    "instructor": "Kelly Ding",
+    "overall": {
+      "count": 113,
+      "excellent": 0.43,
+      "very_good": 0.38,
+      "good": 0.13,
+      "fair": 0.04,
+      "unsatisfactory": 0.01,
+      "course_mean": 4.19,
+      "fas_mean": 4.5
+    },
+    "effective_lectures": {
+      "count": 80,
+      "excellent": 0.46,
+      "very_good": 0.31,
+      "good": 0.15,
+      "fair": 0.08,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.16,
+      "fas_mean": 4.41
+    },
+    "accessible_outside_class": {
+      "count": 97,
+      "excellent": 0.58,
+      "very_good": 0.23,
+      "good": 0.13,
+      "fair": 0.06,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.32,
+      "fas_mean": 4.47
+    },
+    "generates_enthusiasm": {
+      "count": 96,
+      "excellent": 0.5,
+      "very_good": 0.28,
+      "good": 0.14,
+      "fair": 0.07,
+      "unsatisfactory": 0.01,
+      "course_mean": 4.19,
+      "fas_mean": 4.6
+    },
+    "facilitates_discussion": {
+      "count": 54,
+      "excellent": 0.52,
+      "very_good": 0.35,
+      "good": 0.11,
+      "fair": 0.02,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.37,
+      "fas_mean": 4.56
+    },
+    "useful_feedback": {
+      "count": 39,
+      "excellent": 0.51,
+      "very_good": 0.36,
+      "good": 0.1,
+      "fair": 0.03,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.36,
+      "fas_mean": 4.46
+    },
+    "returned_assignments_timely": {
+      "count": 43,
+      "excellent": 0.51,
+      "very_good": 0.37,
+      "good": 0.09,
+      "fair": 0.02,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.37,
+      "fas_mean": 4.43
+    }
+  },
+  "hours_per_week": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_1082e6cb-bf38-418f-a021-86f48fba5f50.png"
+    },
+    "responses": 247,
+    "summary_stats": {
+      "response_ratio": 0.73,
+      "mean": 9.98,
+      "median": 10.0,
+      "stddev": 4.0
+    }
+  },
+  "recommendation_strength": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_71793cab-4f84-4bc4-8cd6-d5c54c51da3b.png"
+    },
+    "with_enthusiasm": {
+      "score": 5,
+      "count": 51,
+      "percentage": 0.2
+    },
+    "likely": {
+      "score": 4,
+      "count": 85,
+      "percentage": 0.34
+    },
+    "with_reservations": {
+      "score": 3,
+      "count": 79,
+      "percentage": 0.32
+    },
+    "unlikely": {
+      "score": 2,
+      "count": 21,
+      "percentage": 0.08
+    },
+    "definitely_not": {
+      "score": 1,
+      "count": 14,
+      "percentage": 0.06
+    },
+    "summary_stats": {
+      "response_ratio": 0.74,
+      "mean": 3.55,
+      "median": 4.0,
+      "stddev": 1.08
+    }
+  },
+  "reasons_for_enrollment": {
+    "elective": 50,
+    "concentration_or_dept": 191,
+    "secondary_or_lang_citation": 17,
+    "gened": 1,
+    "expos": 0,
+    "foreign_lang": 0,
+    "pre_med": 1,
+    "divisional_dist": 9,
+    "quantitative_reasoning": 51
+  },
+  "most_students_open_minded": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_0f23329d-0e08-484d-a65f-72181d0deeb5.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 70,
+      "percentage": 0.35
+    },
+    "agree": {
+      "score": 4,
+      "count": 91,
+      "percentage": 0.45
+    },
+    "neither": {
+      "score": 3,
+      "count": 33,
+      "percentage": 0.16
+    },
+    "disagree": {
+      "score": 2,
+      "count": 7,
+      "percentage": 0.03
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 1,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.6,
+      "mean": 4.1,
+      "median": 4.0,
+      "stddev": 0.83
+    }
+  },
+  "comfortable_expressing_views": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20COMPSCI%2050%20-%20Kelly%20Ding%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_d3476e18-5de7-445c-b1e3-d3f9854ab088.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 67,
+      "percentage": 0.38
+    },
+    "agree": {
+      "score": 4,
+      "count": 63,
+      "percentage": 0.36
+    },
+    "neither": {
+      "score": 3,
+      "count": 46,
+      "percentage": 0.26
+    },
+    "disagree": {
+      "score": 2,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.52,
+      "mean": 4.12,
+      "median": 4.0,
+      "stddev": 0.79
+    }
+  },
+  "comments": [
+    {
+      "text": "CS50 is first and foremost taught for CS50x (the popular online version of the course). This is most obvious in lectures, but it seeps into other aspects of the course as well. That's for good and for bad: CS50 Heads are great and responsive, all technology \"just works\", and the content is well presented and covers a wide topic area. However, in comparison to Ec10a (the largest Harvard course, CS50 is the second largest) the professor feels much more distant and the course has been heavily commercialized. Still, as someone who only knew a little Python going into the course, it's a solid introductory assignment. The final project in particular was my favorite assignment of the semester. To end on a gripe, the Test regrade policy is wildly frustrating, especially for a topic area with so many approaches to solve problems, instructors are not allowed to take student's comments into account and will instead regrade questions they have not seen before without provided context."
+    },
+    {
+      "text": "Give yourself about a day to really do the psets effectively."
+    },
+    {
+      "text": "Definitely think twice if you have little background in CS or are just taking the class because it's a \"well–known\" CS intro class. The lecture format does get frustrating especially when taught at a very fast pace. I didn't enjoy doing the PSETs because office hours were generally not super accessible throughout the week (Sundays are the most helpful but it's cramming your pset 6 hours before it's due). Also did not really enjoy the test: it was asynchronous and a completely different formate compared to the past years when they had one. Would have been better if the test actually had a syllabus. You do get to learn the basics of coding but I would doubt this is the most efficient class."
+    },
+    {
+      "text": "It is definitely helpful to have some CS background before coming into the course. Although I've had friends who took the course with no background and still did well, they struggled a little bit and it was overwhelming in the beginning. I don't think not having a background should discourage you from taking the course though. It could just be helpful to familiarize yourself with some of the terms or take a small course over the summer just so you have some preparation. If you want to be able to learn web design and get an overview of a bunch of different programming languages then this class is a good place to start. I will say that we don't really go into depth with any single language so if you are trying to master a language like say python, another course might be better for that goal."
+    },
+    {
+      "text": "This course may be extremely difficult to individuals with no cs experience."
+    },
+    {
+      "text": "CS50 is the quintessential Harvard course. Definitely a vibe – snacks at every lecture, free rubber ducks/shirts/stress balls, puzzle day, hackathon, etc. Three–hour lectures could be a drag at time, but the snack breaks helped. The ducks (both the giant blow–up one and the AI) were great. Definitely go to the hackathon! I can't say I got much work on my final project done, but we had a great time playing Mario Kart and getting free IHOP. There's so much built–in support in this class; take advantage of it. Specifically, the AI duck, Sunday office hours in Widener, and check50 were helpful. I will say that although this is an introductory course, most people I know who had no prior coding experience had a tough time. It starts out slow but moves very quickly after week 2 or so, so keep that in mind."
+    },
+    {
+      "text": "This teacher see what’s out there but like it doesn’t go in depth into any languages so it seems a bit weird Also, you just need to accept the grading is random☹️"
+    },
+    {
+      "text": "Don’t take this class if you don’t need it for a requirement and/or if you don’t have any cs experience."
+    },
+    {
+      "text": "Don't procrastinate on p–sets."
+    },
+    {
+      "text": "Honestly, CS50 is a super fun course. It is fast paced, and if you're already experienced in programming I'd still recommend it as one of the \"cap stone\" courses Harvard has to offer. I wouldn't blame you if you just went straight to CS61, because while 50 is fun and informative, it kind of dabbles in each topic and doesn't go in depth other than what a barebones C application is. Grading and the midterm WILL have you confused at times, but this just tells you that you need to go with the flow."
+    },
+    {
+      "text": "CS50 is a great CS intro class. Unlike many CS classes, the course covers a lot of practical subjects (like web dev and SQL), so it is pretty rewarding. There's also a good support system in place, so don't come in with any worries!"
+    },
+    {
+      "text": "I think this course can give you a good general overview of computer science, but it definitely can also feel quite overwhelming and fast at times, especially if you are completely new to CS, given the number of topics and languages covered throughout the course. Also, the difficulty throughout the weeks can vary quite a bit, as the middle weeks of the class seem to be when the course is at its hardest, as this is when the concepts of memory and data structures are covered. If you are going to take this class, I would just say that hopefully you aren't too tired when its time for lecture, as given its three–hour length, you might find yourself losing focus at times. As a final note, I would definitely say to take advantage of the provided notes that are available some time after lecture, go to office hours if needed, and if you can, go to the CS50 lunches."
+    },
+    {
+      "text": "You might want to take cs32. This class is not entirely beginner friendly. Even having some experience, this class was difficult but without any cs experience you will spend a lot of time in office hours and teaching yourself content."
+    },
+    {
+      "text": "Don't take this course if you wish to actually learn and retain coding skills in a specific coding language. This course is very unlikely to help on that regard unless you have prior C or Python experience."
+    },
+    {
+      "text": "You probably want to know some coding for this course even if they tell you it isn't necessary, or be ready to learn how to code a lot."
+    },
+    {
+      "text": "If you have an interest in computer science, I would say to try this class, especially in the fall when there are in–person lectures. You go over a lot of languages (C, Python, Javascript, HTML/CSS, Flask). Note that most of the course is spent in C and and only a week is spent on the rest of the languages, so you don't delve as deep into those languages. While the psets are a lot of work, the class itself is pretty interesting and there is a really good community here. Office hours are also really good for whenever you have questions or are struggling on the psets! I would say it is a bit fast–paced for an intro computer science class, but it is definitely doable."
+    },
+    {
+      "text": "Beyond requirements, is no reason to take this course. It is free online, other/smaller classes are more meaningful, and it does not apply to any project because so many languages are covered and the PSETs are often not engaging. However, the occasional pset can be rewarding and lecture, despite being long, is engaging."
+    },
+    {
+      "text": "The quintessential Harvard STEM course. Lectures are a performance by David Malan, and are a bit weird to sit through, as it's almost like you're watching a prerecorded video live. Otherwise, it's a great class for getting a formal introduction to CS (with no background needed or expected) and a very great social experience for meeting new friends and connections. If you are a more serious CS concentrator, with a solid background, and more importantly with time to spend, I would suggest taking 61 over 50. Otherwise, take CS50."
+    },
+    {
+      "text": "This class can be very difficult if you come in with no prior experience, but it is manageable. I wish the grading was more transparent because there is no way to see how you're doing in the class until you receive your final grade. However, I think you will enjoy this class if you enjoy coding in general!"
+    },
+    {
+      "text": "I would tell future students that it covers a wide range of CS topics which can feel overwhelming at times. However, that exposure is important to understand how different programming methods and languages can work together to produce working projects."
+    },
+    {
+      "text": "I would highly recommend this class to students without any background in CS; it will likely be incredibly challenging, but rewarding."
+    },
+    {
+      "text": "maybe take CS32 if you have had no exposure to CS – you do learn a lot of things and expands your knowledge about how the world of CS works, but if you're looking for a course that'll teach you how to practically code, this is not the best course."
+    },
+    {
+      "text": "This class is NOT an introductory class. The problem sets are poorly structured and expect you to know way more than you may have learnt in lecture and section. Take AM10 or CS32– NOT this."
+    },
+    {
+      "text": "CS50 is truly the perfect college course in a perfect world that we don't live in. Professor Malan is a wonderful professor; the weekly lectures are delivered in a spectacular fashion –– immersing you in a half–packed Sanders Theatre that always feels like you're on a live TV set. However, the gruesome length of lectures, combined with a fast pace, allows him to cover extensive material every week, so it is very difficult to process and comprehend the topics introduced, especially as the course progresses to later concepts like pointers and memory. For those planning to take other problem set classes alongside this \"you get what you put in\" course, you should also be aware that the weekly coursework can take up to 15 hours (albeit very fun) if you are not comfortable with the material but want a good grade. Dividing sections based on the level of comfort of students is a wonderful concept in theory, but in reality, it fails to support those who are truly new to computer science. Allowing students to decide their own familiarity at a competitive institution like Harvard inadvertently creates a loophole where many students, who have extensive coding experience from the past, \"drop down\" to a lower section, either undermining their own ability or hoping to receive higher problem set grades, as they are marked with respect to their section peers. This makes sections, supposedly meetings to support students with similar backgrounds, divided by familiarity, and thus expectation in assignments is higher. In fact, there were literal instances (multiple) where my fellow section students helped the TF understand some content and work through the planned section exercises. This should not discourage you from enrolling in CS50, however, as it is a very doable course if you have a lot of free time, and wish to build a strong foundation for future work. There simply isn't another course at Harvard that even compares to the amount of resources and events that Professor Malan and crew put on, such as the free weekly lunches, Widener office hours, puzzle day, hackathon, etc."
+    },
+    {
+      "text": "I learned a lot about the basics of CS from this class, even though I had a decent amount of prior programming knowledge. I would recommend this class to anyone planning on studying CS. If you want to simply learn to code, I would recommend CS 32 instead. A lot of the things that you learn aren't needed outside of a CS degree. The workload is pretty manageable. Start your psets early, and you'll be fine. Malan is a great teacher, and make sure you attend a few CS50 Lunches"
+    },
+    {
+      "text": "Don’t take this course just because it’s famous or because you are good in other STEM areas! I’d recommend taking CS32 or AM10 if you are a beginner. If you decide to take this class, be aware that every problem set gets harder and the development of the logic behind CS is not fast. Be patient and start your psets early!!!"
+    },
+    {
+      "text": "Don't take this class unless you already have a solid backing in CS, either coding on your own or AP CS. If you haven't taken coding before just do CS32. David Malan focuses more on theatrics than syntax which makes it necessary to go outside the course curriculum to actually write your own code for the PSets. The course moves extremely fast and is deceiving with the first two weeks. The final project is kinda a joke as everyone just uses AI to do their entire project."
+    },
+    {
+      "text": "Should you choose to take this class, please take it with the deepest commitment and integrity. Start your PSETs early and go to office hours as much as you can. I know that this is redundant, but take this advice extremely seriously, as you will (and I mean WILL) pull all–nighters if you don't. Even doing the PSET for about 30 minutes after lecture is enough as it gives you a good sense of the coming workload. Don't skip sections or lectures unless you have a genuinely valid reason not to go (especially because David Mallan is an amazing lecturer). If you're not engaged during lectures, you're not close enough to the stage. If you're not engaged with the material of the lectures because you don't understand it, make sure to watch the short topic videos posted underneath the main content of that week. Go to the lunches as well, as they are not only fun, but also give you the incredible opportunity to network. Never be afraid to ask for help as the TFs are friendly and extremely helpful. Overall, please make sure that you have fun while taking this course."
+    },
+    {
+      "text": "You need to have taken a CS class to take this course."
+    },
+    {
+      "text": "This course covers lots of different languages and goes decently deep into CS theory in a way that I don't think a Python–focused class (like CS32) would. I can tell that it's very much intended for CS majors in that way. As a non–CS concentrator (applied math with physics), I still think it was a worthwhile course because of the experience of being in the community and the rigor of this class. But do be warned that working with C for so long can feel bothersome, and the course goes at a breakneck speed which can be really grueling if you leave stuff to the last second. As someone with no coding experience, I definitely underestimated how difficult this course would be."
+    },
+    {
+      "text": "This was absolutely the most difficult course I took this semester. As a complete beginner, expect to be overwhelmed at times. Course starts off pretty slow but after it picks up, it maintains an insanely fast speed throughout. That being said, there's a ton of support and even though problem sets are hard and take time, they're also all doable. Expect this class to take up a lot of your time and should probably be one of your priority classes. If you're taking it for a letter grade, also keep in mind that they grade on a weird scale and its near impossible to tell what letter grade/percent you have at any time during the course, until the end. The teaching staff really place a lot of emphasis on learning and not the grade you have, which is probably great for pass/fail but can be anxiety–inducing for people taking it for a letter since you really don't know where you are at."
+    },
+    {
+      "text": "Take CS 32 if you want to be taught"
+    },
+    {
+      "text": "It would be beneficial to start work for this class earlier in the week, so you can get feedback from TFs on how to better structure and improve your code. You'll get as much out of this course as the amount of work you put in, but you also have the flexibility of choosing from the easier/harder version of the psets based on your schedule (again planning your time wisely will help!) This class really does successfully accommodate a wide range of skill levels, and the final project is a great way to incorporate your individual interests into the class."
+    },
+    {
+      "text": "If you want to expose yourself to a wide variety of programming languages like C, Python and HTML and challenge yourself to think algorithmically to solve problems, then this course may be for you. However, I would recommend you to be ready for a fast–paced course, to have at least some prior computer science experience, to start problem sets early and ensure that you have enough time to complete them without rushing. I think actively making use of lecture notes and short videos to strengthen knowledge learned in lectures can also be important."
+    },
+    {
+      "text": "Frustrating class. Malan is inaccessible and in my opinion not a very effective professor. The exams for this class are unfair and were poorly administered, with the teaching staff telling us there would be \"minimal to no coding\" yet the entire exam was coding."
+    },
+    {
+      "text": "Don't be daunted to take this class even if you have no CS or even STEM background (I was a humanities student coming into this class), but be prepared to spend a lot more time than your peers with CS background to fully understand the course material. UNDERSTANDING is crucial!!!"
+    },
+    {
+      "text": "If you've had decent experience in languages like Java or C++, just take CS61. I took CS50 instead of CS61 because I was worried about my preparation, but I would have taken CS61 if I could go back. The latter stuff in the course like SQL and web development can be learned through self–study relatively quickly. If you're completely new to CS, this one might be rough. The course is very fast–paced and goes over some fundamental topics relatively quickly."
+    },
+    {
+      "text": "While I highly, highly recommend taking this course, the rest of the comments on here are spot on. Despite being billed as a course for \"beginners,\" the course is very much not beginner friendly . What is meant by \"beginner\" is really someone who hasn't worked with C specifically before but has CS experience with other languages. If you have absolutely no prior CS experience this will be a very difficult course."
+    },
+    {
+      "text": "CS50 is not just a class, it's an experience, I beg you to take it for your freshman fall, it is so fun and rewarding"
+    },
+    {
+      "text": "Attend every lecture, stay focused, and don't be afraid to ask for help."
+    },
+    {
+      "text": "This course is what you make of it. Having some cs background will very helpful."
+    },
+    {
+      "text": "You will definitely learn a LOT about CS and a lot of the basics to a number of languages and concepts, but the layout of the course is hard– the psets due sunday night are long and the long lectures are pretty rough to stay focused during because of how long they are. Definitely go to section– that's where I learned most of my stuff"
+    },
+    {
+      "text": "DISCLAIMER: first portion of this response is targeted towards upperclassmen and people not taking the class pass/fail If you want to learn how to code and more practical CS you don't need to take CS50. Take CS32 or APMTH 10. Both are easier classes and you'll actually walk away from class being able to apply what you learned in lecture elsewhere. CS50 is equal parts teaching and theatrics. First half of the semester is brutal because you learn C in depth...and soon learn that you'll probably never use it again in the real world (even in tech). Lecture and section didn't really \"teach you how to code\" but focused more on foundational concepts in computing and computer science. However, this course was definitely useful and I learned how to approach certain problems logically and critically. I was simultaneously enrolled so I could just skip lecture and watch the 3hr videos. DONT WATCH LECTURE VIDEOS. Just go over the lecture notes that are posted a day or two after lecture. This will be a MUCH better use of your time than watching Malan run a 3hr CS50 gameshow each week. Also, don't overestimate your comfortability level. There's no shame in choosing the least comfortable section (lots of people will lie anyways just to coast in the slower and kinder pace of these sections). If you take the class Pass/Fail or as a freshman, then most of this response doesn't matter to you. It should be a fun experience and it's a famous Harvard class for a reason. You'll meet a lot of friends and have the opportunity to network with cool tech companies."
+    },
+    {
+      "text": "Dear Student, Do not let the title: introduction to Computer Science fool you. This course progresses quite rapidly if you have no experience of computer science. In order to really develop a full understanding of the course, you must be willing to dedicate time and really struggle with the concepts. Also, the introduction of the midterm really means that you definitely need to lock in because no AI is going to save you. The lectures are also quite long so be aware and maybe prepare some other material to keep your mind from dozing off (or doze off for all that matters). The grading will also be ambiguous and you will have no idea where you are in terms of letter grading, but if you are into problem solving and creative design it gets better with the ability to create a final project and, honestly, was pretty fun for me. Overall, its a solid course but not as beginner friendly as advertised and also might not be the right fit if you have experience coding(take CS61)."
+    },
+    {
+      "text": "Don't take this class thinking it'll be an easy light–workload class, it won't be, especially with minimal coding background. But def do take this course. Canonical Harvard experience. Start the last (finance) pset early please. Do not waste your late hours early on."
+    },
+    {
+      "text": "I'd say definitely take this class if you have not taken a cs class before. It's a very solid introduction and makes the subject very entertaining. However, it is a difficult class for a beginner and future students should be aware that this class is a major time commitment."
+    },
+    {
+      "text": "Take this class, but be prepared to be challenged by the PSETS. Also, the exam was very hard this year (the average was 65 or something). So, be careful if you are taking it letter–graded. If you are taking it SAT/UNSAT don't be worried too much and I am sure you will learn a lot. Plus, if you can take the course over the summer, and you will have a good semester. I regret not doing that."
+    },
+    {
+      "text": "Don't take this course unless you are interested in computer science and app/website design. Especially for engineers who need it for the concentration requirement it won't be applicable and way more challenging so take another course. PSETs take an unnecessarily long time so start them as early as you can to not ruin your weekend."
+    },
+    {
+      "text": "This course is probably Harvard's most famous course, and for good reason! there are fun events like puzzle day, the hackathon, and ihop at 2 am. I definitely learned a lot in this class, but it definitely emphasizes breadth over depth. It is a good intro to CS course, but don't expect to go very in–depth on a certain topic. Lectures are extremely fast paced and hard to follow at times, but it's to be expected given how much content he covers. I recommend using the notes on CS50X and following along using those. THE TEST IS NOT JUST CONCEPT–BASED (as TFs will tell you), THERE IS CODING so make sure to put syntax on your cheat sheet if you're not comfortable with it. Overall a good course for someone trying out CS, I just wish it was a smaller class setting instead of big lectures (as I personally learn CS better in that setting). Depending on your comfort level with CS (which you fill out a form to indicate), you'll be assigned to different sections. Technically sections are 2 hours 45 min, but some TFs let you out in 45 min–1 hour, i recommend asking around to find those TFs and filling out the section switch request form to switch to those if you don't want to stay the full 3 hours."
+    },
+    {
+      "text": "If you already have coding experience, I would recommend taking CS61 or CS51. If you don’t, CS32 or AM10 are likely better starting points. I came in with no prior coding experience, and even after talking with many upperclassmen, I found that CS50 is not a course that really builds a strong foundation in coding logic. Instead, it functions more like a crash course, moving through many different languages in a short amount of time. Because the course covers so much material so quickly, lectures can feel rushed, and it becomes harder to slow down and really digest the concepts. Over the semester, you also notice attendance dropping, which I think reflects how challenging it is to keep up through lecture alone. Interestingly, students with prior CS experience often find the course too straightforward, while students starting from scratch, like me, find it extremely fast–paced. The problem sets are long and very project–heavy, which can make it difficult to focus on deeply understanding the fundamentals before being asked to apply them. The midterm was particularly difficult, and preparation resources were fairly limited, mostly consisting of previous take–home exams. That made the exam feel more challenging than it needed to be. I think CS50 works well if you are looking for a one–time exposure to computer science and do not plan to continue in the field. However, if you intend to take more CS courses, or actually want to get a strong foundation in coding, I would personally recommend starting elsewhere. One major highlight of the course, though, is the TF support. The TFs were fantastic, and section was where I truly learned and clarified concepts. I am very grateful for my section experience."
+    },
+    {
+      "text": "I took this my Freshman Fall as someone who was planning to double major in CS and Neuro, but will now take Neuro on the Computational track. I have programmed for a long time, and am fluent in Java, Python, CSS, PHP, SQL, and more. TLDR: I did not enjoy this class. Either take it at the same time as another class (and then you’ll be able to watch it asynch) or take CS 32. If I were to do it again, I would only take it if I could cross–register, otherwise I’d do CS 32 (which focuses on Python). Please note that if I had taken this class in high school I would have loved it. The bar gets really high when you’re at Harvard, and I’d say there is probably a better intro to CS course like CS 32 — but this is subjective. Course structure: – One weekly 3 hour lecture at Sanders Theater – 1 pset which usually involves more than one assignment (2–4 coding problems that take total 4 hours+ per week) – 1 pset form which involves theoretical questions about that week’s content – 1 section (time depends on what you say your comfort level is) Pros: – CS50 is an iconic class. Many many freshmen take it, Sanders Theater is a beautiful grand place to have a class in, there are many bonding and social experiences (CS50 Fair, Hackathon, Final Project presentation, etc.). In that sense, if what you’re looking for is a chance to bond and meet people, and you’re not taking any other “big iconic classes” where you meet many peers (ex HUM10, EC10…) then I’d say that’s a valid reason to take this course. Weirdly, it’s a great social experience albeit not a great intellectual one. – If you have experience with coding, won’t take too much of your time. Took me 6 hours per week (psets + pset form). – Classes are interactive. David often calls students up to the stage and they do challenges that prove the content we are learning. Fun to watch! Cons: – Spreads itself really thin across multiple languages – Focuses a lot on memory and “what goes on beneat the hood of coding”, and spends little time on actually discussing the coding implementations. This is stressful when you go to do the psets. – Lecture is 3 HOURS!!! Way too much. They should split it in a different way… – Our year was the first time there was a test. We knew little about it (besides it’s existance) until ONE WEEK before it took place. Format was very ambiguous, and everyone was unsure as to how to prepare. – They are not transparent with grading at all. Final grades haven’t come out but it shall be a mystery how they came to be… not sure how that works yet. They tell you what % each stuff weighs but there are additional components taken into account that they don’t mention in that scale, your TF pitches in, your final project is evaluated in a grading scale that is very mysterious, there are rumors it’s curved depending on what section you’re in (they’re divided by prior experience with coding), but no one knows… they could communicate it better."
+    },
+    {
+      "text": "If I had one advice is that from someone who did not have a lot of CS experience the course will move extremely fast and get hard fast especially when you get to data structures and pointers and many times you are going to have to see the YouTube shorts because some of the content is rushed at the end of the lecture to cover all of it. However, if you're interested in learning the core components of cs this is perfect as it allows you to learn different languages, create a really cool final project and also have an elementary foundation about how computers work."
+    },
+    {
+      "text": "I surely would tell people to take this course. This is such a well–structured course that can introduce you to a lot of different programming languages. And it is up to you to use that in the future in a creative way. You are provided with a lot of resources, the website, chatbot, the recorded lecture and teaching fellows, so catching up on work is not that hard. I would recommend staying open–minded and put yourself out there to meet people as a lot of people take this course in Freshman Fall."
+    },
+    {
+      "text": "CS50 is a great class to take as a first year, in my opinion. First, it's a great survey course as it covers a wide range of programming languages (e.g. C, Python, SQL). I'd recommend it over CS32 unless you are solely interested in CS for its applications and not intending on concentrating in it. Secondly, you meet a lot of first years which is very nice. Problem sets were all very interesting and relevant. I would recommend you have some sort of programming background (even just understanding binary to decimal conversion or playing around in Scratch would be helpful!). Sections were not very interesting (I think the course could do without it) but overall, I recommend!"
+    },
+    {
+      "text": "Amazing community, supportive staff, and fun engagement events; however, the content we cover in 10 weeks is a lot and can be overwhelming, especially in the middle weeks, the last PSET, and the final project."
+    },
+    {
+      "text": "If you have never even touched code before get ready for a hectic middle of the semester, and for the final projects set realistic goals for yourself (and your partner, if applicable), and do your research before deciding on the project"
+    },
+    {
+      "text": "Attend office hours! Helps you talk out your confusions. Some TFs were more well–equipped and knowledge to answer questions then others; luckily, my TF was very knowledge and supportive to lead our section + guide through concepts, questions, examples. Make sure to find a TF during Office Hours that you're willing to seek support from. Class moves very fast for someone who has little computer science experience. It's manageable, but one lecture a week means you're overloaded with new information at the beginning, and then slowly work through the week. Sometimes things brought up in lecture aren't practiced during the week, but just introduced as concepts. At the same time, you DONT need experience in computer science before taking the class. Midterm preparation didn't seem to be well–structured in the preparation–sense. Not many practice problem / similar problem opportunities beforehand. Definitely a good class for feeling more prepared to take more computer science classes or approach your own independent learning to be able to learn different languages, functions, and features. The goal of the class isn't to teach you everything, but help you become more better prepared to learn these new ideas in the future."
+    },
+    {
+      "text": "If you want to learn a lot and very deeply or you are a beginner, this is probably not the best course to take."
+    },
+    {
+      "text": "CS50 taught me how to solve problems in the mindset of a computer scientist: you don't need to know how to code in every language immediately, but after this course, you can just about figure out whatever it is you need to. It was a fun experience that helped me find some friends in my first semester and ultimately make a project I was passionate about!"
+    },
+    {
+      "text": "take CS50, whether you're a CS or gov student. Everybody codes, and CS50 is your way to it. Your background doesn't matter(to some extent), but your grit and enthusiasm to learn programming do. You won't regret it."
+    },
+    {
+      "text": "I would tell them that it is a lot of information to take in and a difficult course, but the lectures are surreal and the opportunity of being in CS50 is one no one should pass up on."
+    },
+    {
+      "text": "I am very conflicted about CS 50. On the one hand, it does provide a good overview of CS since it touches upon many subjects in CS, but the experience of the course left a lot to be desired. Should you be someone genuinely interested in CS, you can get a lot out of the course if you put a lot into it. I took it as a \"review\" course to fill in the gaps of my knowledge and I found that to be useful. However, due to the format of the course, students can have a hard time really effectively ingesting and grasping the content. The 3 hour long lectures are not conducive to effective learning. The lecture's are streamed and recorded on YouTube. I remember seeing a comment on one of the YouTube videos stating that the person watching the video felt as if they were in the lecture hall with the students. However, I find it ironic that, as a student in lecture, I felt like I was the person watching the video. The lectures are quite performative and detracts from the intimate classroom setting where you get to work through problems and learn more intimately and effectively. Due to this, CS 50's sections are also 3 hours long which ends up being a rehash of lecture for students to actually learn the content. Additionally, there is a substantial gap in communication between the course heads and students and between the course heads and TFs. Specifically, in the days leading up to the exam, both TFs and students were left to speculate on the format of the test (since it was a new format this year). Additionally, the information that the course heads did provide was not accurate. For example, the course heads noted that the test was going to be largely conceptual and not involve a lot of coding. However, there was significant coding on the exam which was incredibly misleading. Additionally, the exam was done on Canvas. Coding in Canvas was a horrible experience since there was no easy way to indent and the long exam made it so that the website progressively got slower and slower to the point where it was difficult to type. All in all, CS 50 does provide an overview of CS that can be effective if you are someone who is willing to put in the effort to learn, but the course is quite performative and results in a sub–par learning experience."
+    },
+    {
+      "text": "CS50 is a relatively fast–paced course. Some prior exposure to programming would be definitely be helpful given the pacing and material of the course although it's also doable otherwise if you dedicate a sufficient amount of time."
+    },
+    {
+      "text": "If you have never taken CS before, I highly encourage you TO LOOK BACK AND RUN AS FAR AS YOU CAN PLEASE DO NOT TAKE CS50!! You will have to fight tooth and nail to keep up with the course material the jump from scratch in week 0 to pointers and eventually flask will genuinely make you feel sooo discouraged. Especially since about 70% of the class already has at least some coding experience. If you're maybe taking this alongside some less strenuous classes perhaps you can manage. But if you have 2 or 3 other pset classes... Plus the lectures really arent conducive for learning, I have no idea who thought one 3 hour lecture every week AND a 3 hour section was the way to go. Most of the time it feels like Malan is teaching the cameras rather than the actual class. Again, if you have 0 coding experience I have to say this course genuinely doesnt teach you much, it throws 1000 things at you all at once. If you're really interested in exploring CS I think you're better of taking a course like CS32. I suffered about 10,000 breakdowns because of this class. Every week I opened the website to do my Pset I felt my antidepressants lose all effect. Whenever I walked to Sanders for lecture I used to pray that someone on a scooter would run me over so I'd be excused for the next week. If you still are deadset on the course, I would say please just test it out maybe for 3 weeks and dont be afraid to use add/drop. My biggest regret was being stubborn and thinking I could persevere through this class. I would've saved myself so much stress if I just called it quits early on. If you take this class (for the people with 0 coding experience AND I MEAN ZEROOOO EXPERIENCE) just take a deep breath and pray to God. And if you don't believe in God, take a look at all the religions and pick one and start praying because you'll need it."
+    },
+    {
+      "text": "Study a lot for the midterm."
+    },
+    {
+      "text": "You can learn a lot from this class, even if you have some programming skills (e.g. Python). It focuses more on teaching you a way to think than actually programming and implementing projects, which has its benefits and drawbacks. That being said, I found this class to be an enjoyable experience and feel much more versed in thinking like a programmer than before."
+    },
+    {
+      "text": "Amazing class!! Very chill if you take it SAT/UNSAT just to learn even with no CS background."
+    },
+    {
+      "text": "Take it! the culture, events, and torture is part of the harvard experience!"
+    },
+    {
+      "text": "This class is probably unlike any other class you will take. Try to finish your problem sets early and utilize the CS50 duck and debugger when working on your problem sets; they were life savers. Also, try to understand how your code works on a fundamental level. This will make debugging your code a much easier experience and will prepare you for the midterm which I HIGHLY recommend studying early for. I may have had a rough time in the class and think that it needs some major restructuring but you will learn a lot and I believe it is good preparation for future computer science class. As an introductory computer science class, however, it might not be the best. Regardless, if you put in the hard work and effort, you will gain much knowledge and have a rewarding experience, the class may have been difficult but it is definitely fun."
+    },
+    {
+      "text": "FOR ALL STUDENTS: Go to lecture if you can since it's pretty enjoyable and has a nice atmosphere (though they don't take attendance, so leave/come when you want). Malan's lectures are more of performances, and you will most likely ask questions in the section if you don't understand something, as Malan moves pretty fast. The midterm is very hard. The class average this year was a high 60 on the midterm. If you have CS experience, then it will not be bad, but if you have none, make sure to study. Also the final grade is curved, so don't worry about your performance; just have a better average PSET score than average and do better than average on the midterm. Your PSETS are graded by undergraduates and have a strict rubric; your forms almost never will have perfect scores. FOR STUDENTS WITH CS EXPERIENCE: For those who have taken CS classes, had internship experience, or had made big projects, this class is very easy. I was in the same boat and spent half the time expected on the PSETS. If you want to, then it may be worth it to skip 50 to take 61 your freshman semester. This way you have the prereq for many 1000+ CS classes early on. This class is very rudimentary; I argue it doesn't even get challenging compared to CS1240. Enjoy the easy class; lectures won't be worth it, and sections are just reviewing what you learn in lecture, so just pay attention in section. Don't be afraid to show your advanced algo/DSA in PSETs, as they can expect them for a perfect score. FOR NON–CS STUDENTS/STUDENTS WITH LITTLE CS: This course will be challenging during the later weeks, as it is compounding all the knowledge you learned in the previous weeks. If you are a CS major, it only gets worse, so it may be good to learn some basic CS before going into the class for the 2–3 week boost. For those not in CS, then this class is an alright demonstration of what you can do in CS; the class is on a time crunch in terms of topic coverage."
+    },
+    {
+      "text": "Take another intro CS class. The 3 hour lectures are hard to sit through, and the class is an unreasonable amount of work. Larger events hosted by the class are worth attending though."
+    },
+    {
+      "text": "Very challenging but you learn a lot from the course"
+    },
+    {
+      "text": "I think this course is good for getting a taste of various programming languages and concepts. For me it was helpful to have some AP computer science background (I took CSA and CSP in high school). This course really helped me get used to coding in the VS Code environment which I feel will be extremely helpful for the future. I do think I'm glad I took this course instead jumping ahead to more difficult courses as someone who is not the most confident in my CS abilities. I did enjoy getting learn about many languages, however I felt that it was hard to really gain a deep understanding of most concepts as we moved through them so fast. If you don't have any CS background, you can still gain a lot from the course, but you should really put in the effort and try to stay on top of the work so you don't feel overwhelmed (it will be difficult). I don't know a ton about CS 32, but I would definitely look into that and see which may be a better fit for you. This course can be rewarding a lot of the time, but there were many occasions in which I felt very frustrated with the work/felt like I was wasting my time. The three–hour lectures were definitely too long for me to focus the entire time, despite them giving us a break, so I truly hope that they break it up next time they offer this course. TLDR: Weigh your options, but if you end up needing to take this course, I believe everyone (no matter their background) can gain something from it. Just be prepared to feel dissatisfied at times."
+    },
+    {
+      "text": "If you are not planning on taking any more computer science classes, do yourself a favor and take CS32. This class is no longer that amazing or chill due to the midterm that will cause you so much stress because 1) they are so not transparent about it, and 2) it was unrealistically long for someone so new to these topics. CS50 teaches you a lot of stuff in a very short amount of time, and the course staff and TFs kept telling us it was going to be all conceptual, but ended up being so much coding. They were so not transparent and completely lied to our faces, and the creepy monitoring virtally was so unnecessary. The projects were fine and psets were fine, but if you want an A for sure, take CS32. This class was ok."
+    },
+    {
+      "text": "THIS COURSE IS VERY INTRODUCTORY. This course often tries to sell itself as a course fit for people of all backgrounds including people with more experience and it is absolutely critical that you realize that this is NOT the case. If you have a modicum of programming experience, or have even made a small project for yourself, you need need need need to skip CS50. You will be bored to tears in the 4 hour long lectures, section will have you falling asleep, and the psets will feel repetitive at best and a disastrous waste of time at worst. Now, if you have no CS background and just want to get into the topic, this course is spectacular. In fact, I'd go so far as to say there is no better way anywhere else in the world to get an introduction to CS that covers this breadth of material so quickly while still starting from scratch. But, if you have programmed before, you MUST skip this class. Take CS61 or something instead."
+    },
+    {
+      "text": "Absolutely 100% take this class, it is a great experience and even if you don't plan on studying CS it will satisfy requirements. Also don't worry about grades, they will take care of you and getting an A is manageable for everyone. Very fun class."
+    },
+    {
+      "text": "I think as a CS concentrator, CS50 is a good class to take in order to get experience in a plethora of languages. Keep in mind that you do most of the class in C, a week of Python, a week of Javascript/HTML, and then Flask. To that point, you do bounce around a lot of different languages for exposure. I think the best advice I would have if you are taking CS50 is don't start the PSETs late, they are pretty time–consuming and it is better to start early."
+    },
+    {
+      "text": "Take this class if you want to have a broader foundation of compuer science knowledge. After taking this class, you will be able to do lots of serious projects because you will be equipped with the knowledge of different programming languages."
+    },
+    {
+      "text": "Work hard, and you'll do pretty okay. Also don't use ChatGPT to do your PSets for you, you just end up not learning that much and feeling worse about your work as it piles up in a lack of understanding. It also really doesn't do you favors for the final."
+    },
+    {
+      "text": "Take CS50! It's such a good introduction to computer science, and with modern tools, you are basically equipped to do anything in CS afterwards: web development, data science, etc with only a bit of extra effort. David Malan can be a bit much sometimes, but he's an incredible showman and will explain everything to you well. The workload is totally managable for a STEM class. The course is also well organized with its website and good TFs. Overall, great class!"
+    },
+    {
+      "text": "I would only take the course if you have a lot of time to spend and truly want to learn programming. This is not an easy A, and you have to put in the work because the test is one of the hardest tests. Be prepared to spend over 10 hours on some problem sets."
+    },
+    {
+      "text": "I think CS50 is great for giving you an exposure to many CS topics. Though, for a first CS class, it might be a bit fast paced if you have never learned any CS before. Lecture is very well organized and like an entire production, though at times it is a bit long. Section wasn't too interesting and a bit redundant. Overall, though, I think that the class built well upon the couple CS classes I took in high school and expanded my knowledge of CS. If you're taking CS50 freshman year, it's also fun to have so many other freshman you can meet and participate in the events like Puzzle Day and the CS50 Fair."
+    },
+    {
+      "text": "Enjoy your time in CS50! Take advantage of all the resources it has to offer and you will be okay. Make sure not to start your pset on Sunday, it's too much stress."
+    },
+    {
+      "text": "CS50 was a great class overall, and especially considering how many students they had to cater to, they managed to keep engagement really high and the class quite enjoyable. David Malan was a great lecturer, and the class was always entertaining, despite the long section time. As a more design–oriented person, I wasn't the biggest fan of all the C we had to work through, but the last few weeks (HTML/CSS, Flask, web dev) were super cool and informative! We had an online exam which was proctored by this web camera service, Proctorio. That was a little stressful, but the exam questions and grading was fair in my opinion. And the final project gives you so much freedom, which is nice! Puzzle Day is awesome, definitely show up!! And don't worry too much about not coming in with a coding background, I didn't and I felt pretty supported throughout the class despite that."
+    },
+    {
+      "text": "Take this class online during the Summer so that you can have dedicated time to focus on the extensive assignments."
+    },
+    {
+      "text": "PLEASE only take this class IF AND ONLY IF you never in you're entire life didn't hear about coding, programming or any related topic. If you have even the slightest backround do not take this class. If you want to learn how to code don't take this class. Take this class only as an introduction to programming – don't expect anything more then conceptional understanding and. nothing more"
+    },
+    {
+      "text": "Take it pass fail if you're not majoring in CS but need a good base on coding, take CS32 if you only need some proficiency with coding."
+    },
+    {
+      "text": "Fun class, Malan is quite bubbly and knowledgeable, and odds are your section leader will be competent as well. The class feels like being thrown into water that isn't too deep but still leaves you flailing for a moment. A challenging and interesting introduction to CS for those who haven't done much prior, and a decent refresher for those who have."
+    },
+    {
+      "text": "Take this if you are CS major. Do not take it for the QRD it is to much work."
+    },
+    {
+      "text": "Take this class! You learn so much, and the final project is a lot of fun!"
+    },
+    {
+      "text": "Honestly would not recommend taking this in your first–year fall if you have CS experience. I had some CS experience but felt unprepared to take a higher level CS course like CS61. It can be hard to know where you are at relative to others coming into this school for the first time. I would recommend taking something else in the fall and consider taking it in the spring when you'll have a semester at Harvard under your belt and can ask friends who took it in the fall about the course and whether it is worth it. I might consider taking STAT110 in the fall if you are interested at all in statistics, since that course is not offered in the spring but is a prereq for tons of CS, Stats, Math courses. Overall the course is not the greatest in my opinion. Lectures are very performative, impersonal, and incredibly long. My section wasn't much better. Grading is very opaque and it is incredibly hard to tell how well you are doing in the course (test is curved but many people are taking the class pass/fail, they also determine your grade by hand at the end of the semester and take into account how comfortable you are with CS according to a form sent out at the start of the semester."
+    },
+    {
+      "text": "DO NOT PROCRASTINATE DO NOT TURN IN ANY PART OF FINAL PROJECT LATE do NOT skip section or class"
+    },
+    {
+      "text": "Do not take this class. It is performative, so if you are going in to genuinely explore your interest in CS, you're out of luck. Take CS 32 instead, please."
+    },
+    {
+      "text": "This class is a very good introduction to computer science. Prior experience with programming and the topic is not necessary to do well. David Malan is also a very good lecturer and will teach the concepts in an easy to understand way. You will need a lot of time with the PSets and final project though. Also be sure to study up for the midterm, if that is still being assigned."
+    },
+    {
+      "text": "Work hard on the Pset forms! The forms are a large part of your grade so put effort in them."
+    },
+    {
+      "text": "Great class to learn approaches to coding but not necessarily if you want to learn actually how to code in a specific language."
+    },
+    {
+      "text": "Some of the PSETs take a long time, so do them before the weekend if you actually want to enjoy your weekend."
+    },
+    {
+      "text": "Great class. Not easy, but a great introduction on how to code"
+    },
+    {
+      "text": "Do not take this course unless you already have coding experience."
+    },
+    {
+      "text": "Make sure to keep up with the material because the midterm is stressful otherwise"
+    },
+    {
+      "text": "I think this is good for a high level but dont expect to understand how to build a web app by the end."
+    },
+    {
+      "text": "If you are hoping to take CS50, I would highly recommend taking it in the fall for the experience/community component. I would also encourage people from all levels of comfort with Computer Science to take this course. I personally had very limited coding experience and walked away having so many useful skills that I will use in both future courses and my future work."
+    },
+    {
+      "text": "This class taught me a lot about a very broad range of CS topics, but feels very different from my other courses. You attend one lecture and one section a week, and then are completely on your own to finish the fairly long PSET by Sunday. As a student that took AP CSA in high school, I found this course manageable, and I think students that plan to take CS50 without any prior experience with coding should be prepared for a significant amount of independent learning."
+    },
+    {
+      "text": "Be ready to put in the work."
+    },
+    {
+      "text": "I personally really liked this class and enjoyed the applications of coding."
+    },
+    {
+      "text": "Be prepared to put in a lot of hours if you have no experience coding. It won't be easy, despite it being called an introductory course to coding."
+    },
+    {
+      "text": "I have a strong CS background from highschool. I took CS61 initially but dropped it for CS50. Big mistake. CS50 is a waste of time. If you know how to code, CS32 is better for programming 1 req since it’s way easier. If you don’t know how to code, this class isn’t going to teach you man. It’s a lose lose horrible class"
+    },
+    {
+      "text": "Review lecture notes to go over difficult material. Start psets early, you can get a lot of pset questions answered in section."
+    },
+    {
+      "text": "This course is definitely manageable, no matter your skill level in coding. However, I will warn that the class will be difficult if you do not have experience with programming. Professor Malan draws a comparison to drinking water from a firehose, which I believe is accurate if you are not already familiar with the material, especially in the last few weeks of the class. If you have taken a class like AP CSA, then the class will likely start off easy and get harder as the year goes on. The community of CS50 is as vibrant as you make it. I would recommend showing up to the lecture and going to the events, as they really make the course feel like what I imagined CS50 to be before taking the course. For example, CS50 lunch is a great opportunity to meet other students. As a warning: come to the lecture mentally prepared for the idea that it is 3 hours long. It will still be draining, but I believe that coming in with realistic expectations mutes that effect. Overall, the course is effective in teaching general principles of coding, and Professor Malan makes an effort to reference the current state of computer science by mentioning artificial intelligence."
+    },
+    {
+      "text": "Really ask yourself what level of experience you have and enter knowing that you will be graded based on what you select to be your comfortability level. Be proactive in the course. Reach out when you need help, sign up for office hours, email the heads with a note from HUHS Urgent Care when you are sick and an extension on your 72 late hours may be granted. Be disciplined from the start and please attend lectures. Yes, everyone will skip because watching it later sounds nice but you are genuinely wasting time. The 2.5 hours blocked off for the class should be used to sit in Sanders and trying your best to grasp at the big ideas. Then, later on you can watch again at 2x speed to tackle things you didn't completely understand. THIS is a much healthier option than skipping, not understanding, and struggling big time on the PSET due Sunday night. Do the work and pay attention, this course is easy if you do, otherwise you resort to AI and the lack of understanding compounds for the next week's PSET. Trust me."
+    },
+    {
+      "text": "Only do this class if you are a CS concentrator or have a background in CS, otherwise you will suffer. If you're looking to fulfill your QRD requirement, honestly go for CS32 or something else, because coming into this class with no CS experience is a lot of pain."
+    },
+    {
+      "text": "All skill levels in CS are able to succeed in this course."
+    },
+    {
+      "text": "I came into CS50 with a lot of CS experience looking to meet my friends, not to learn anything new. If you have a lot of CS experience, the sad truth is that you must either rough it in CS61, take CS120/121 if you have experience with proofs/want a challenge, or take CS50, which is a bit elementary but super fun. I will say that my current friend group includes a lot of other CS50 students, so in that sense this class was a success for me. But as for the course, the grading is incredibly pointless (style points are decided by TFs and given out randomly). There is no mapping from assignment grades to class grade, so many have no clue how they are doing in the class. I presume I have an A with a high test grade and 4/5 style points on PSets, but again, no way of knowing. The PSets are interesting and the final project is fun. I don't have the best perspective for none–CS majors, but I presume this course would be somewhat challenging considering it jumps into some low–level topics pretty fast. For other CS majors with experience, take this class if you want a fun time, light work, and a quintessential Harvard experience. Just don't expect that the course is run as well as David Malan's lectures are produced."
+    },
+    {
+      "text": "Be prepared to have to teach yourself the material and section/office hours will be your best friend. Also be prepared for the speed the class moves at. Every week you will be introduced to brand new topics, so make sure you don't fall behind."
+    },
+    {
+      "text": "This is a good intro to CS course, but the lecture structure being 3 hours long is not great. Also, the teaching format is mainly example–driven teaching, which may not be effective for everyone."
+    },
+    {
+      "text": "If you have prior experience with the majority of the course content, this class is not worth taking if you want to gain something out of it. CS50 covers a lot of material but I don't think it goes super in depth into other programming languages aside from C. Everything after the C/Python unit seemed a bit sped through. As a result, I'm not certain I'd recommend the course as an introductory level course. The grading for this course is also a bit weird."
+    },
+    {
+      "text": "Take the class for the reason that everyone takes the class and there are many fun events linked to the course like the hackathon or the puzzle day."
+    },
+    {
+      "text": "It's a useful course and a good experience. However, if you're looking for pure efficiency in learning code, a more specialized class would be a better choice. I feel that I've learned general coding basics and appreciate that, but I could've learned a lot more in the semester."
+    },
+    {
+      "text": "This is not an easy introductory course for complete beginners, but a good class to take with some prior experience and interest in concentrating in CS. Taking a more rigorous CS class in freshman fall would definitely add a lot of stress, but this was, for the most part, a stress–less class, and still sets you up well to take higher level courses in the future. Also, helpful in just refreshing CS concepts that you might have learned a long time ago and are out of practice with."
+    },
+    {
+      "text": "It is challenging but doable without prior experience with computers! Helps you stretch your brain :)"
+    },
+    {
+      "text": "Take the course if you have a background in computer science or have a very large appetite to learn a broad spectrum of computer science related topics."
+    },
+    {
+      "text": "Starter–friendly course of computer science. Just take it!"
+    },
+    {
+      "text": "I would say if you are at all apprehensive about jumping into a higher CS course, then you should start here. And if you want to try out CS, this is aslo a very good taste of what it is going to be like, although, of course, not 100% because of the pedagogical setting"
+    },
+    {
+      "text": "TAKE THIS CLASS! It's legendary for a reason."
+    },
+    {
+      "text": "Though CS50 is far from being the best course offered here, it is imperative to take it if you are interested in STEM. The class is not necessarily hard, but rather very boring. If taking the course, be sure to create connections with those in your section because that is the only sense of community you will form in this class."
+    },
+    {
+      "text": "Do not let this class help you form your opinions on the CS department at Harvard. I don't think it's representative of the department."
+    },
+    {
+      "text": "Here's the thing. I took APCSA and was about to skip the course. But everyone told me to take it because it is a really good class. That I don't necessarily disagree with, however I have some qualms with how its taught. A lot of people often would do everything in their powers to skip lecture which is fair, but that makes me think that the lecture style of CS50 isn't working out. Tell me why we have to sit through almost 3 hours of lecture at a time. It's horrible. I think if CS50 was flipped classroom with more time devoted to having TFs and CAs around to help solve the psets then everyone would be happier. I find that although there were a lot of office hours, it was hard to utilize them if they didn't fit into your schedule. Also, why did we have a midterm test? I feel like that is unecessary. I wish the course heads were more transparent about grades because I took it letter graded because but I feel like I have no idea what my grade will be because there is little to no explanation about it simply due to the fact that everyone is expected to take it pass fail"
+    },
+    {
+      "text": "It's a bit hard sometimes but you'll learn a lot."
+    },
+    {
+      "text": "This class is not very helpful for learning to program. I almost never received feedback beyond a grade on my actual code. Additionally, the grades are done in a fairly obscure manner, so it can be difficult to know how well you are doing. You are graded on a curve with your section; however, you never find out information such as the section averages on any assignment."
+    },
+    {
+      "text": "Don't start problem sets the day before they are do! Make sure that you give yourself ample time to really play around with the problems and find the most efficient way to do things, not just the way that satisfies Check50. Use all of the tools that are given to you by CS50 (office hours, the Duck, your section leader, and all the tools on cs50.dev). Also participate in CS50 events (Puzzle Day, Hackathon, and visit others at the CS50 fair)."
+    },
+    {
+      "text": "Don’t underestimate this course! I came in with good CS knowledge and it still took a few hours a week. I know beginners to CS found this course extremely difficult and felt like the lectures taught easy concepts that didn’t prepare them for the harder psets. So just be prepared to spend a few hours each week making sure you understand everything!"
+    },
+    {
+      "text": "MAKE SURE TO NAME YOUR PROBLEM SETS CORRECTLY!!!!!!! If you turn in a problem set with the wrong name, the autograder will give it a zero, and they do not make any exceptions at all. Besides this, I think I learned quite a bit from CS50 even though I had coding experience going into the class. Being allowed to use a chatbot for the final project taught me just how good LLMs have gotten at code, and now I have a good foundation on how different parts of computer science work together. Putting those together, this class has opened my eyes to projects that are now very much within my reach that were not before."
+    },
+    {
+      "text": "I would tell future students to start problem sets early and stick with it even when experiencing hardship, because that is really the essence of computer science. No matter how smart you are you will inevitably get stuck again and again so just stick with it."
+    },
+    {
+      "text": "This class is incredibly useful and impactful if you have any interest in computer science and want to gain a broad knowledge of several languages, so long as you understand the time commitment and stress level that you are signing up for. Coming in without any previous experience, the problem sets were incredibly challenging and time consuming and one was not prepared for them with lecture or section. Taking advantage of office hours and the resources on the website is vital during the semester to keep up with the course work and understand the material fully. Additionally, at times the lack of clear guidance or feedback was frustrating and discouraging. However, the progress you will make by the end of the semester is incredibly rewarding."
+    },
+    {
+      "text": "take cs32 if you can!"
+    },
+    {
+      "text": "I think students should take this course only if they have some experience in CS. I do not think that this is an intro–level course. This course can also be taken by students who just want to see a close academic community."
+    },
+    {
+      "text": "The class is like a show. I definitely learned a lot, but sometimes it was annoying when Malan had to go back and re–shoot something because he fumbled a word or something. You also spend half your time learning C which is not so useful today. If you want to study CS, this is a good foundational course that sets you up with a lot of the core principals in the field. If you just want to have some coding experience, I would take CS32 instead and be much better at python, something actually useful today."
+    },
+    {
+      "text": "Do not take the course of you're looking for an easy credit and a pleasurable computer science experience, especially with little to no computer science background."
+    },
+    {
+      "text": "You should take CS50! Even if you don't plan on studying CS, this class helps you understand the basics of programming and how computers work. As a someone who didn't have much of a background coming in, the class was moderately hard. The p–sets are definitely doable but do make time to do them early! Please go to your section as well, as you'll be able to resolved any questions you have with the TF."
+    },
+    {
+      "text": "DO NOT TAKE THIS CLASS UNLESS YOU HAVE CS BACKGROUND. This class is marketed for beginners, BUT IT IS NOT! As someone who has never coded before, this class is not built for beginners. The lectures are not even helpful for the problem sets, and the problem sets are often really hard and take so much time. If you do not have time to spend hours on end in the office or re–teaching yourself, don't take this class. You will just be in a state of perpetual confusion, not knowing what is going on. I would recommend taking a different intro CS class if you are a true beginner; this class is not built for us. Even people I know with coding experience didn't know what was happening."
+    },
+    {
+      "text": "Be careful if you are trying to take this class with zero cs experience, it will be HARD."
+    },
+    {
+      "text": "very chill class, but it goes a long way to have some basic experience w CS. if you took AP CSA or AP CSP this should be a very good class for you."
+    },
+    {
+      "text": "Definitely go to office hours and ask questions during section!"
+    },
+    {
+      "text": "Enjoy the experience, as it certainly is a unique one; be prepared to spend a lot of time outside of class and manage your time well."
+    }
+  ]
+}

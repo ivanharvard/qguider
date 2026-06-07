@@ -1,0 +1,292 @@
+{
+  "course": {
+    "title": "PHS 2000A",
+    "subject": "PHS",
+    "number": "2000A",
+    "instructors": [
+      "Jarvis Chen"
+    ],
+    "semester": {
+      "season": "Fall",
+      "year": 2025
+    }
+  },
+  "response_rate": {
+    "responded": 16,
+    "invited": 22,
+    "response_ratio": 0.73
+  },
+  "course_feedback": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_7feec95b-5ae1-4b57-a391-3860425f7c59.png"
+    },
+    "overall": {
+      "count": 16,
+      "excellent": 0.56,
+      "very_good": 0.38,
+      "good": 0.06,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.5,
+      "fas_mean": 4.21
+    },
+    "materials": {
+      "count": 15,
+      "excellent": 0.33,
+      "very_good": 0.6,
+      "good": 0.07,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.27,
+      "fas_mean": 4.21
+    },
+    "assignments": {
+      "count": 16,
+      "excellent": 0.44,
+      "very_good": 0.44,
+      "good": 0.13,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.31,
+      "fas_mean": 4.07
+    },
+    "feedback": {
+      "count": 16,
+      "excellent": 0.56,
+      "very_good": 0.31,
+      "good": 0.13,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.44,
+      "fas_mean": 4.06
+    },
+    "section": {
+      "count": 14,
+      "excellent": 0.21,
+      "very_good": 0.57,
+      "good": 0.14,
+      "fair": 0.07,
+      "unsatisfactory": 0.0,
+      "course_mean": 3.93,
+      "fas_mean": 4.24
+    }
+  },
+  "instructor_feedback": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_7b923dc1-4bf1-45d7-9b37-3402ea9967a9.png"
+    },
+    "instructor": "Jarvis Chen",
+    "overall": {
+      "count": 16,
+      "excellent": 0.81,
+      "very_good": 0.19,
+      "good": 0.0,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.81,
+      "fas_mean": 4.5
+    },
+    "effective_lectures": {
+      "count": 16,
+      "excellent": 0.63,
+      "very_good": 0.31,
+      "good": 0.06,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.56,
+      "fas_mean": 4.41
+    },
+    "accessible_outside_class": {
+      "count": 16,
+      "excellent": 0.94,
+      "very_good": 0.06,
+      "good": 0.0,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.94,
+      "fas_mean": 4.47
+    },
+    "generates_enthusiasm": {
+      "count": 16,
+      "excellent": 0.88,
+      "very_good": 0.06,
+      "good": 0.06,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.81,
+      "fas_mean": 4.6
+    },
+    "facilitates_discussion": {
+      "count": 16,
+      "excellent": 0.88,
+      "very_good": 0.13,
+      "good": 0.0,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.88,
+      "fas_mean": 4.56
+    },
+    "useful_feedback": {
+      "count": 10,
+      "excellent": 0.8,
+      "very_good": 0.2,
+      "good": 0.0,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.8,
+      "fas_mean": 4.46
+    },
+    "returned_assignments_timely": {
+      "count": 14,
+      "excellent": 0.64,
+      "very_good": 0.29,
+      "good": 0.07,
+      "fair": 0.0,
+      "unsatisfactory": 0.0,
+      "course_mean": 4.57,
+      "fas_mean": 4.43
+    }
+  },
+  "hours_per_week": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_a74660ca-3fb6-4995-b0a8-0db223c20163.png"
+    },
+    "responses": 15,
+    "summary_stats": {
+      "response_ratio": 0.68,
+      "mean": 7.73,
+      "median": 7.0,
+      "stddev": 4.2
+    }
+  },
+  "recommendation_strength": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_526321cb-f5da-4c3b-b4df-c8479017ba4a.png"
+    },
+    "with_enthusiasm": {
+      "score": 5,
+      "count": 7,
+      "percentage": 0.47
+    },
+    "likely": {
+      "score": 4,
+      "count": 6,
+      "percentage": 0.4
+    },
+    "with_reservations": {
+      "score": 3,
+      "count": 2,
+      "percentage": 0.13
+    },
+    "unlikely": {
+      "score": 2,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "definitely_not": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.68,
+      "mean": 4.33,
+      "median": 4.0,
+      "stddev": 0.72
+    }
+  },
+  "reasons_for_enrollment": {
+    "elective": 0,
+    "concentration_or_dept": 15,
+    "secondary_or_lang_citation": 0,
+    "gened": 0,
+    "expos": 0,
+    "foreign_lang": 0,
+    "pre_med": 0,
+    "divisional_dist": 1,
+    "quantitative_reasoning": 1
+  },
+  "most_students_open_minded": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_d6f68c0b-f993-4545-97e5-30a39f2037f1.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 11,
+      "percentage": 0.73
+    },
+    "agree": {
+      "score": 4,
+      "count": 3,
+      "percentage": 0.2
+    },
+    "neither": {
+      "score": 3,
+      "count": 1,
+      "percentage": 0.07
+    },
+    "disagree": {
+      "score": 2,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.68,
+      "mean": 4.67,
+      "median": 5.0,
+      "stddev": 0.62
+    }
+  },
+  "comfortable_expressing_views": {
+    "chart": {
+      "path": "explorance%20Blue%20-%20Feedback%20for%20PHS%202000A%20-%20Jarvis%20Chen%20_br_%20(click%20titles%20in%20the%20table%20of%20contents%20below%20to%20display%20a%20report%20section)_files/ChartPic_c4e66701-ebbe-4d47-a955-93e289337085.png"
+    },
+    "strongly_agree": {
+      "score": 5,
+      "count": 8,
+      "percentage": 0.62
+    },
+    "agree": {
+      "score": 4,
+      "count": 5,
+      "percentage": 0.38
+    },
+    "neither": {
+      "score": 3,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "disagree": {
+      "score": 2,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "strongly_disagree": {
+      "score": 1,
+      "count": 0,
+      "percentage": 0.0
+    },
+    "summary_stats": {
+      "response_ratio": 0.59,
+      "mean": 4.62,
+      "median": 5.0,
+      "stddev": 0.51
+    }
+  },
+  "comments": [
+    {
+      "text": "This is the flagship class for PHS. If you are taking it, you likely have to take it. It covers a wide range of important methods used in the PHS program and does so in greater depth than first–year statistics but less so than PhD–level biostatistics. Be prepared to spend a decent amount of time completing the assignments because they are long. More importantly, the class helps you bond with other students in your cohort."
+    },
+    {
+      "text": "I had heard this course was a \"trauma bonding\" class –– it's true you bond with your cohort, but I didn't find it to be trauma–inducing at all. It feels like someone is holding your hand through challenging concepts. This is a great course to learn foundational concepts, bond with your cohort, and a great intro to being a PHS PhD student."
+    },
+    {
+      "text": "You can succeed, even if you don't have a strong math background"
+    }
+  ]
+}
