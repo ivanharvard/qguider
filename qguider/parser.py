@@ -19,7 +19,7 @@ class ParseError(Exception):
         else:
             raise ValueError("Invalid arguments for ParseError")
 
-class Parser:
+class QGuideParser:
     def __init__(self, html: str | Path):
         if isinstance(html, Path):
             with open(html) as f:
@@ -406,3 +406,15 @@ def _score_distribution_from_row(row: Tag) -> ScoreDistribution:
         count=_int(cells[2]),
         percentage=_pct(cells[3]),
     )
+
+class QGuideIndexParser:
+    def __init__(self, html: str | Path):
+        if isinstance(html, Path):
+            with open(html) as f:
+                html = f.read()
+        self.html = html
+        self.soup = BeautifulSoup(html, "html.parser")
+
+    
+
+        return courses

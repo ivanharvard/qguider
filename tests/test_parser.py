@@ -23,7 +23,7 @@ def test_parser_fixtures(name):
     json_path = Path("tests/fixtures") / f"{name}.json"
 
     expected = json.loads(json_path.read_text())
-    actual = qguider.Parser(html_path).parse().model_dump(mode="json")
+    actual = qguider.QGuideParser(html_path).parse().model_dump(mode="json")
 
     assert actual == expected
 
@@ -32,7 +32,7 @@ def dump_json_fixtures():
         html_path = Path("tests/fixtures") / f"{name}.html"
         json_path = Path("tests/fixtures") / f"{name}.json"
 
-        qguide = qguider.Parser(html_path).parse()
+        qguide = qguider.QGuideParser(html_path).parse()
 
         json_path.write_text(
             qguide.model_dump_json(indent=2),

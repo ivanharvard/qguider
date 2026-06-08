@@ -121,3 +121,16 @@ class QGuide(BaseModel):
     most_students_open_minded: AgreementDistribution
     comfortable_expressing_views: AgreementDistribution 
     comments: list[Comment] = Field(default_factory=list)
+
+class School(enum.Enum):
+    FAS = ("FAS", "Faculty of Arts and Sciences")
+    SEAS = ("SEAS", "School of Engineering and Applied Sciences")
+    GSE = ("GSE", "Graduate School of Education")
+    HMS = ("HMS", "Harvard Medical School")
+    SPH = ("SPH", "Harvard T.H. Chan School of Public Health")
+    SUMMER = ("Summer", "Summer School")
+
+
+    def __init__(self, code: str, description: str):
+        self.code = code
+        self.description = description
