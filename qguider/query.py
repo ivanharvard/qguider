@@ -11,7 +11,14 @@ class Query:
     def __init__(self, creds: str | Path, outpath: str | Path = Path("qguider_data")):
         self._outpath = outpath
         self._creds = creds
-        return self
+
+        self._schools = [School.FAS]
+        self._semesters = []
+        self._subjects = []
+        self._departments = []
+        self._classes = []
+        self._instructor_last_name = None
+        self._search_term = None
 
     def semesters(self, *args):
         sems = self._unpack(*args)
@@ -49,7 +56,7 @@ class Query:
         return self
     
     def download(self) -> None:
-        downloader = Downloader(self, outpath=self._outpath)
+        downloader = Downloader(self)
         return downloader.download()
 
     def run(self):
@@ -69,6 +76,14 @@ class Query:
     
     def _coerce(self, value, target_type):
         try:
+            if isinstance(value, target_type):
+                return value
+
+            from_string = getattr(target_type, "from_string", None)
+
+            if from_string and isinstance(value, str):
+                return from_string(value)
+
             return target_type(value)
         except Exception as e:
             raise ValueError(f"Could not coerce {value} to {target_type}") from e

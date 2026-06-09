@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
+from dataclasses import dataclass
 
 import enum
 
@@ -99,9 +100,37 @@ class Season(str, enum.Enum):
     summer = "Summer"
     fall = "Fall"
 
+    @classmethod
+    def from_string(cls, value: str) -> "Season":
+        value = value.strip().capitalize()
+        for member in cls:
+            if member.value == value:
+                return member
+        raise ValueError(
+            f"Invalid season: {value!r}. "
+            f"Expected one of: {[s.value for s in cls]}"
+        )
+
 class Semester(BaseModel):
     season: Season
     year: int
+
+    @classmethod
+    def from_string(cls, value: str) -> "Semester":
+        parts = value.strip().split()
+
+        if len(parts) != 2:
+            raise ValueError(
+                f"Invalid semester format: {value!r}. "
+                "Expected a format like 'Fall 2020'."
+            )
+
+        season, year = parts
+
+        return cls(
+        season=Season(season.capitalize()),
+        year=int(year),
+    )
 
 class Course(BaseModel):
     title: str
@@ -134,3 +163,31 @@ class School(enum.Enum):
     def __init__(self, code: str, description: str):
         self.code = code
         self.description = description
+
+    @classmethod
+    def from_string(cls, value: str) -> "School":
+        value = value.strip().upper()
+        for member in cls:
+            if member.code == value or member.description.upper() == value:
+                return member
+        raise ValueError(
+            f"Invalid school: {value!r}. "
+            f"Expected one of: {[s.code for s in cls]} or {[s.description for s in cls]}"
+        )
+
+@dataclass(frozen=True)
+class QGuideListing:
+    department: str
+    subject: str
+    course_number: str
+    course_code: str
+    title: str
+    section: str
+    instructor: str | None
+    qguide_id: str
+    url: str
+
+class QGuideURLs(BaseModel):
+    semester: Semester
+    school: School
+    listings: list[QGuideListing]

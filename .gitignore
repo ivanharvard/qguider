@@ -1,5 +1,6 @@
 .env
 __pycache__/
 *.html
+!fixtures/*.html
 .venv/
 pytest_cache/
