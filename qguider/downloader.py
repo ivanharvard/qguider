@@ -1,3 +1,4 @@
+import json
 import re
 from pathlib import Path
 from dotenv import dotenv_values
@@ -6,6 +7,9 @@ from html import unescape
 from bs4 import BeautifulSoup
 import hashlib
 import logging
+import time
+import random
+from requests.exceptions import RequestException
 
 from .parser import QGuideParser
 from .models import QGuideListing, QGuideURLs
@@ -34,68 +38,242 @@ class Downloader:
     def __init__(self, query):
         self.query = query
         self.downloaded_files = []
+        self.failed = []  # list of (listing, reason) for report_failed
 
-    def download(self):
+    def download(
+        self,
+        checkpoint: bool = False,
+        checkpoint_interval: int = 50,
+        report_failed: bool = False,
+        redownload_failed: bool = True,
+        parse_failed_path: str | Path | None = "qguider_data/parse_failed.json",
+    ):
         client = self._make_client()
         qguide_urls = []
+        since_checkpoint = 0
+
         for school in self.query._schools:
             for semester in self.query._semesters:
-                url = self.BASE_URL.format(
-                    schoolCode=school.code, 
-                    semester=str(semester)
-                )
-                logger.info(
-                    f"Scraping QGuide URLs for {school.code} {semester}..."
-                )
-                logger.debug(f"Requesting index page: {url}")
-                
-                response = client.get(
+                logger.info("Scraping QGuide URLs for %s %s...", school.code, semester)
+
+                response = self._get_with_retries(
+                    client,
                     self.BASE_URL,
                     params={"school": school.code, "calTerm": str(semester)},
                 )
 
                 if response.status_code != 200:
                     raise ValueError(
-                        f"Failed to download index for {school} {semester}: \
-                          {response.status_code}")
+                        f"Failed to download index for {school} {semester}: "
+                        f"{response.status_code}"
+                    )
 
                 listings = self.parse_index_html(response.text)
                 listings = self._filter_listings(listings)
 
-                qguide_urls.append(QGuideURLs(semester=semester, school=school, listings=listings))
+                logger.info("Found %d QGuide listings after filtering.", len(listings))
 
-        for qguide_url in qguide_urls:
-            for listing in qguide_url.listings:
-                logger.info(
-                    f"Downloading QGuide for {listing.course_code} \
-                      ({listing.title}) @ {listing.url}..."
-                )
-                response = client.get(listing.url)
-
-                if response.status_code != 200:
-                    logger.warning(
-                        f"Failed to download QGuide for {listing.course_code} \
-                          ({listing.title}): {response.status_code}"
+                if len(listings) == 0:
+                    logger.error(
+                        "No listings found for %s %s. Check query parameters or SESSION cookie.",
+                        school.code,
+                        str(semester),
                     )
+
+                qguide_urls.append(
+                    QGuideURLs(semester=semester, school=school, listings=listings)
+                )
+
+        all_items = [
+            (qguide_url, listing)
+            for qguide_url in qguide_urls
+            for listing in qguide_url.listings
+        ]
+
+        progress = getattr(self.query, "_progress", None)
+        task_id = None        
+
+        if progress:
+            task_id = progress.add_task("Downloading QGuides", total=len(all_items))
+
+        if redownload_failed:
+            if not parse_failed_path:
+                parse_failed_path = Path(self.query._outpath) / "parse_failed.json"
+            else:
+                parse_failed_path = Path(parse_failed_path)
+
+            if not parse_failed_path.exists():
+                logger.warning("No parse failure file found at %s; cannot redownload failed items.", parse_failed_path)
+            else:
+                with open(parse_failed_path, "r", encoding="utf-8") as f:
+                    failed_items = json.load(f)
+                    failed_files = {item["file"] for item in failed_items}
+    
+        for qguide_url, listing in all_items:
+            try:
+                outdir = (
+                    Path(self.query._outpath)
+                    / str(qguide_url.semester.year)
+                    / qguide_url.semester.season.value
+                    / self._safe_path_part(listing.department)
+                    / self._safe_path_part(listing.subject)
+                )
+                outdir.mkdir(parents=True, exist_ok=True)
+
+                url_hash = hashlib.sha1(listing.url.encode()).hexdigest()[:10]
+                outpath = outdir / (
+                    f"{listing.course_number}_{listing.section}_{url_hash}.html"
+                )
+
+                should_redownload = str(outpath) in failed_files
+
+                if outpath.exists() and outpath.stat().st_size > 0 and not should_redownload:
+                    logger.info("Skipping existing QGuide file: %s", outpath)
+                    self.downloaded_files.append(outpath)
                     continue
 
-                outdir = Path(self.query._outpath) / \
-                            qguide_url.semester.season / \
-                                str(qguide_url.semester.year) / \
-                                    listing.department / \
-                                        listing.subject
-                outdir.mkdir(parents=True, exist_ok=True)
-                
-                url_hash = hashlib.sha1(listing.url.encode()).hexdigest()[:10]
-                outpath = outdir / \
-                    f"{listing.course_number}_{listing.section}_{url_hash}.html"
+                if should_redownload:
+                    logger.info("Redownloading previously failed QGuide: %s", outpath)
+                else:
+                    logger.info("Downloading new QGuide file: %s", outpath)
+
+                logger.info(
+                    "Downloading QGuide for %s (%s) @ %s...",
+                    listing.course_code,
+                    listing.title,
+                    listing.url,
+                )
+
+                self._sleep_between_requests()
+
+                try:
+                    response = self._get_with_retries(client, listing.url)
+                except RequestException as e:
+                    reason = str(e)
+                    logger.warning(
+                        "Failed to download QGuide for %s (%s): %s",
+                        listing.course_code,
+                        listing.title,
+                        reason,
+                    )
+                    if report_failed:
+                        self.failed.append((listing, reason))
+                    continue
+
+                if response.status_code != 200:
+                    reason = f"HTTP {response.status_code}"
+                    logger.warning(
+                        "Failed to download QGuide for %s (%s): %s",
+                        listing.course_code,
+                        listing.title,
+                        reason,
+                    )
+                    if report_failed:
+                        self.failed.append((listing, reason))
+                    continue
 
                 with open(outpath, "w", encoding="utf-8") as f:
                     f.write(response.text)
 
                 self.downloaded_files.append(outpath)
+                since_checkpoint += 1
+
+                if checkpoint and since_checkpoint >= checkpoint_interval:
+                    self._save_checkpoint()
+                    since_checkpoint = 0
+
+            finally:
+                if progress and task_id is not None:
+                    progress.advance(task_id)
+
+        if checkpoint:
+            self._save_checkpoint()
+
+        if report_failed and self.failed:
+            self._report_failed()
 
         return self
+
+    def _save_checkpoint(self) -> None:
+        checkpoint_path = Path(self.query._outpath) / "checkpoint.json"
+
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+
+        with open(checkpoint_path, "w", encoding="utf-8") as f:
+            json.dump([str(p) for p in self.downloaded_files], f, indent=2)
+        logger.info("Checkpoint saved (%d files) → %s", len(self.downloaded_files), checkpoint_path)
+
+    def _report_failed(self) -> None:
+        logger.warning("Failed to download %d QGuide(s):", len(self.failed))
+        for listing, reason in self.failed:
+            logger.warning("  %s | %s | %s | %s", listing.course_code, listing.title, listing.url, reason)
+
+
+    def _get_with_retries(
+        self,
+        client: requests.Session,
+        url: str,
+        *,
+        params: dict | None = None,
+        max_retries: int = 5,
+        timeout: tuple[int, int] = (5, 30),
+    ) -> requests.Response:
+        for attempt in range(max_retries):
+            try:
+                response = client.get(url, params=params, timeout=timeout)
+
+                if response.status_code in {429, 500, 502, 503, 504}:
+                    raise requests.HTTPError(
+                        f"Retryable status code: {response.status_code}",
+                        response=response,
+                    )
+                
+                if self._is_retryable_application_error(response):
+                    raise requests.HTTPError(
+                        "Application error detected in response",
+                        response=response,
+                    )
+
+                return response
+
+            except RequestException as e:
+                if attempt == max_retries - 1:
+                    raise
+
+                sleep_for = (2 ** attempt) + random.uniform(0, 1)
+                logger.warning(
+                    "Request failed for %s; retrying in %.1fs: %s",
+                    url,
+                    sleep_for,
+                    e,
+                )
+                time.sleep(sleep_for)
+
+        raise RuntimeError("unreachable")
+
+
+    def _sleep_between_requests(self, range: tuple[float, float] = (0, 0)) -> None:
+        delay = getattr(self.query, "_request_delay", range)
+
+        if delay is None:
+            return
+
+        if isinstance(delay, tuple):
+            sleep_for = random.uniform(*delay)
+        else:
+            sleep_for = float(delay)
+
+        logger.debug("Sleeping %.2fs before next request.", sleep_for)
+        time.sleep(sleep_for)
+
+
+    def _safe_path_part(self, value: str) -> str:
+        return re.sub(r'[<>:"/\\|?*]+', "_", value).strip()
+    
+    def _is_retryable_application_error(self, response: requests.Response) -> bool:
+        text = response.text.lower()
+        return "an application error occurred on the server" in text
+
 
     def normalize_text(self, text: str) -> str:
         return " ".join(unescape(text).split())
@@ -125,6 +303,13 @@ class Downloader:
             department = self.normalize_text(dept_el.get_text(" ", strip=True))
 
             for a in dept_card.select("a[href][id]"):
+                href = a["href"]
+                if "my-harvard-bc.bluera.com/rpv-eng.aspx" not in href:
+                    continue
+
+                if "SelectedIDforPrint=" not in href:
+                    continue
+
                 label = self.normalize_text(a.get_text(" ", strip=True))
                 parsed = self.parse_course_label(label)
 
@@ -144,10 +329,38 @@ class Downloader:
 
         return listings     
 
-    def parse_qguide(self):
+    def parse(self, *, skip_failed: bool = True):
         results = []
+        failed = []
+
         for file in self.downloaded_files:
-            results.append(QGuideParser(file).parse())
+            try:
+                results.append(QGuideParser(file).parse())
+            except Exception as e:
+                logger.warning("Failed to parse %s: %s", file, e)
+                failed.append((file, type(e).__name__, str(e)))
+
+                if not skip_failed:
+                    raise
+
+        if failed:
+            failed_path = Path(self.query._outpath) / "parse_failed.json"
+            with open(failed_path, "w", encoding="utf-8") as f:
+                json.dump(
+                    [
+                        {
+                            "file": str(file),
+                            "error_type": error_type,
+                            "reason": reason,
+                        }
+                        for file, error_type, reason in failed
+                    ],
+                    f,
+                    indent=2,
+                )
+
+            logger.warning("Wrote %d parse failure(s) to %s", len(failed), failed_path)
+
         return results
     
     def _filter_listings(
@@ -203,6 +416,7 @@ class Downloader:
             filtered.append(listing)
 
         return filtered
+
     
     def _load_session_cookie(self, creds: str | Path) -> str:
         values = dotenv_values(creds)

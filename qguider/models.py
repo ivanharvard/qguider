@@ -132,6 +132,9 @@ class Semester(BaseModel):
         year=int(year),
     )
 
+    def __str__(self):
+        return f"{self.season.value} {self.year}"
+
 class Course(BaseModel):
     title: str
     subject: str

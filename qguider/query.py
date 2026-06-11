@@ -20,6 +20,8 @@ class Query:
         self._instructor_last_name = None
         self._search_term = None
 
+        self._progress = False
+
     def semesters(self, *args):
         sems = self._unpack(*args)
         self._semesters = [self._coerce(sem, Semester) for sem in sems]
@@ -55,15 +57,34 @@ class Query:
         self._search_term = search_term
         return self
     
-    def download(self) -> None:
+    def download(
+        self, 
+        checkpoint=False, 
+        checkpoint_interval=50,
+        report_failed=False
+    ) -> None:
         downloader = Downloader(self)
-        return downloader.download()
+        return downloader.download(checkpoint, checkpoint_interval, report_failed)
 
-    def run(self):
-        return self.download().parse()
+    def run(
+        self, 
+        checkpoint=False, 
+        checkpoint_interval=50, 
+        report_failed=False, 
+        skip_failed=False
+    ):
+        return (
+            self
+            .download(checkpoint, checkpoint_interval, report_failed)
+            .parse(skip_failed)
+        )
 
     def outpath(self, path: str | Path | NoneType):
         self._outpath = path
+        return self
+    
+    def progress(self, enabled: bool = True):
+        self._progress = enabled
         return self
 
     def _unpack(self, *args):

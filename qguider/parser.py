@@ -27,7 +27,7 @@ class QGuideParser:
         self.html = html
         self.soup = BeautifulSoup(html, "html.parser")
 
-    def parse(self) -> QGuide:
+    def parse(self) -> QGuide: 
         self.course = self.get_course()
 
         return QGuide(
@@ -42,7 +42,7 @@ class QGuideParser:
             comfortable_expressing_views=self.get_comfortable_expressing_views(),
             comments=self.get_comments()
         )
-    
+
     def get_course(self) -> Course:
         page_text = _clean(self.soup.get_text(" ", strip=True))
 
@@ -52,7 +52,10 @@ class QGuideParser:
         )
 
         if not match:
-            raise ParseError("Could not find course and instructor information in the HTML.")
+            if "An application error has occurred" in page_text:
+                raise ParseError("An application error occurred.")
+            else:
+                raise ParseError("Could not find course and instructor information in the HTML.")
 
         title = _clean(match.group("title"))
         instructor = _clean(match.group("instructor"))
@@ -406,15 +409,3 @@ def _score_distribution_from_row(row: Tag) -> ScoreDistribution:
         count=_int(cells[2]),
         percentage=_pct(cells[3]),
     )
-
-class QGuideIndexParser:
-    def __init__(self, html: str | Path):
-        if isinstance(html, Path):
-            with open(html) as f:
-                html = f.read()
-        self.html = html
-        self.soup = BeautifulSoup(html, "html.parser")
-
-    
-
-        return courses

@@ -4,3 +4,4 @@ __pycache__/
 !fixtures/*.html
 .venv/
 pytest_cache/
+qguider_data/
