@@ -20,21 +20,25 @@ class ParseError(Exception):
             raise ValueError("Invalid arguments for ParseError")
 
 class QGuideParser:
-    def __init__(self, html: str | Path):
+    def __init__(self, html: str | Path, listing: QGuideListing | None = None):
         if isinstance(html, Path):
             with open(html) as f:
                 html = f.read()
         self.html = html
         self.soup = BeautifulSoup(html, "html.parser")
+        self.listing = listing
 
-    def parse(self) -> QGuide: 
+    def parse(self) -> QGuide:
         self.course = self.get_course()
 
+        instructor_feedback = self.get_instructor_feedback()
+
         return QGuide(
+            id=self.listing.qguide_id if self.listing else "",
             course=self.course,
             response_rate=self.get_response_rate(),
             course_feedback=self.get_course_feedback(),
-            instructor_feedback=self.get_instructor_feedback(),
+            instructor_feedback=[instructor_feedback] if instructor_feedback is not None else [],
             hours_per_week=self.get_hours_per_week(),
             recommendation_strength=self.get_recommendation_strength(),
             reasons_for_enrollment=self.get_reasons_for_enrollment(),
@@ -47,7 +51,7 @@ class QGuideParser:
         page_text = _clean(self.soup.get_text(" ", strip=True))
 
         match = re.search(
-            r"Feedback for\s+(?P<title>[A-Z]+(?:\s+[A-Z]+)*\s+\S+)\s+-\s+(?P<instructor>.+?)(?:\s+<br>|\s+\(click|\s+Table of Contents)",
+            r"Feedback for\s+(?P<codes>.+?)\s+-\s+(?P<instructor>.+?)(?:\s*<br>|\s+\(click|\s+Table of Contents)",
             page_text,
         )
 
@@ -57,10 +61,23 @@ class QGuideParser:
             else:
                 raise ParseError("Could not find course and instructor information in the HTML.")
 
-        title = _clean(match.group("title"))
         instructor = _clean(match.group("instructor"))
 
-        subject, number = title.split(maxsplit=1)
+        code_re = re.compile(r'([A-Z]+(?:-[A-Z]+)*)\s+([A-Z0-9.]+)')
+        all_codes = code_re.findall(match.group("codes"))
+
+        if len(all_codes) > 1 and self.listing:
+            matched = next(
+                ((s, n) for s, n in all_codes
+                 if s == self.listing.subject and n == self.listing.course_number),
+                None,
+            )
+            subject, number = matched if matched else (self.listing.subject, self.listing.course_number)
+        elif self.listing:
+            subject = self.listing.subject
+            number = self.listing.course_number
+        else:
+            subject, number = all_codes[0] if all_codes else ("", "")
 
         semester_match = re.search(
             r"Table of Contents for\s+(?P<season>Winter|Spring|Summer|Fall)\s+(?P<year>\d{4})\s+Term Report for Students",
@@ -69,7 +86,7 @@ class QGuideParser:
 
         if not semester_match:
             raise ParseError(
-                f"Could not find semester information for {title} - {instructor} in the HTML."
+                f"Could not find semester information for {subject} {number} - {instructor} in the HTML."
             )
 
         semester = Semester(
@@ -77,12 +94,27 @@ class QGuideParser:
             year=int(semester_match.group("year")),
         )
 
+        if (
+            self.listing
+            and self.listing.semester
+            and semester != self.listing.semester
+        ):
+            raise ParseError(
+                f"Semester mismatch: HTML reports {semester}, expected {self.listing.semester}. "
+                "File may have been re-downloaded with current-semester content."
+            )
+
+        aliases = [f"{s} {n}" for s, n in all_codes if not (s == subject and n == number)]
+
         return Course(
-            title=title,
+            title=f"{subject} {number}",
             subject=subject,
             number=number,
             instructors=[instructor],
             semester=semester,
+            department=self.listing.department if self.listing else "",
+            section=self.listing.section if self.listing else "",
+            aliases=aliases,
         )
     
     def get_response_rate(self) -> ResponseRate:
@@ -139,7 +171,7 @@ class QGuideParser:
 
                 return block
 
-        raise ParseError(f"Could not find report block: {title_contains}")
+        return None
     
     def _maybe_report_block(self, title_contains: str) -> Tag | None:
         try:
@@ -157,8 +189,8 @@ class QGuideParser:
             good=_pct(cells[4]),
             fair=_pct(cells[5]),
             unsatisfactory=_pct(cells[6]),
-            course_mean=_float(cells[7]),
-            fas_mean=_float(cells[8]),
+            course_mean=_pct(cells[7]),
+            fas_mean=_pct(cells[8]),
         )
 
     def _likert_rows_by_question(self, block: Tag) -> dict[str, LikertDistribution]:
@@ -210,9 +242,12 @@ class QGuideParser:
 
         raise ParseError("Could not find statistics table.")
 
-    def get_course_feedback(self) -> CourseFeedback:
+    def get_course_feedback(self) -> CourseFeedback | None:
         chart_block = self._report_block("Course Feedback for")
         table_block = self._report_block("Course General Questions")
+
+        if not chart_block or not table_block:
+            return None
 
         rows = self._likert_rows_by_question(table_block)
 
@@ -246,8 +281,10 @@ class QGuideParser:
             returned_assignments_timely=rows.get("Returns assignments in a timely fashion"),
         )
 
-    def get_hours_per_week(self) -> HoursPerWeek:
+    def get_hours_per_week(self) -> HoursPerWeek | None:
         block = self._report_block("how many hours per week")
+        if not block:
+            return None
         table = self._statistics_table(block)
         stats = self._stats_from_table(table)
 
@@ -264,8 +301,10 @@ class QGuideParser:
             summary_stats=summary_stats,
         )
 
-    def get_recommendation_strength(self) -> RecommendationStrength:
+    def get_recommendation_strength(self) -> RecommendationStrength | None:
         block = self._report_block("How strongly would you recommend this course")
+        if not block:
+            return None
 
         freq_table = self._frequency_table(block)
         stats_table = self._statistics_table(block)
@@ -297,6 +336,9 @@ class QGuideParser:
 
     def get_reasons_for_enrollment(self) -> ReasonsForEnrollment:
         block = self._report_block("reason(s) for enrolling")
+        if not block:
+            return None
+
         table = block.find("table")
 
         if not table:
@@ -321,8 +363,10 @@ class QGuideParser:
             quantitative_reasoning=rows.get("Quantitative Reasoning with Data Requirement"),
         )
 
-    def _agreement_distribution(self, title_contains: str) -> AgreementDistribution:
+    def _agreement_distribution(self, title_contains: str) -> AgreementDistribution | None:
         block = self._report_block(title_contains)
+        if not block:
+            return None
 
         freq_table = self._frequency_table(block)
         stats_table = self._statistics_table(block)
@@ -360,6 +404,10 @@ class QGuideParser:
 
     def get_comments(self) -> list[Comment]:
         block = self._report_block("future students about this class")
+        if not block:
+            return []
+
+    
         table = block.find("table")
 
         if not table:
@@ -384,15 +432,15 @@ def _clean(text: str) -> str:
     return " ".join(text.split())
 
 def _pct(text: str) -> float:
-    return float(text.strip().removesuffix("%")) / 100
+    return None if text in ("N/A", "NRP") else float(text.strip().removesuffix("%")) / 100
 
 
 def _int(text: str) -> int:
-    return int(text.strip().replace(",", ""))
+    return None if text in ("N/A", "NRP") else int(text.strip().replace(",", ""))
 
 
 def _float(text: str) -> float:
-    return float(text.strip())
+    return None if text in ("N/A", "NRP") else float(text.strip())
 
 
 def _chart_from_block(block: Tag) -> Chart | None:

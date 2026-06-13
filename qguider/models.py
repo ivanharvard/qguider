@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from dataclasses import dataclass
 
 import enum
@@ -15,13 +15,13 @@ class Chart(BaseModel):
 
 class LikertDistribution(BaseModel):
     count: int
-    excellent: float
-    very_good: float
-    good: float
-    fair: float
-    unsatisfactory: float
-    course_mean: float
-    fas_mean: float
+    excellent: float | None
+    very_good: float | None
+    good: float | None
+    fair: float | None
+    unsatisfactory: float | None
+    course_mean: float | None
+    fas_mean: float | None
 
 class CourseFeedback(BaseModel):
     chart: Chart
@@ -45,9 +45,9 @@ class InstructorFeedback(BaseModel):
 
 class SummaryStatistics(BaseModel):
     response_ratio: float
-    mean: float
-    median: float
-    stddev: float
+    mean: float | None
+    median: float | None
+    stddev: float | None
 
 class HoursPerWeek(BaseModel):
     chart: Chart
@@ -135,23 +135,39 @@ class Semester(BaseModel):
     def __str__(self):
         return f"{self.season.value} {self.year}"
 
+    def to_qguide_term(self) -> str:
+        return f"{self.year} {self.season.value}"
+
 class Course(BaseModel):
     title: str
     subject: str
+    department: str
     number: str
     instructors: list[str] = Field(default_factory=list)
     semester: Semester
+    section: str
+    aliases: list[str] = Field(default_factory=list)
 
 class QGuide(BaseModel):
+    id: str
     course: Course
-    response_rate: ResponseRate
-    course_feedback: CourseFeedback
-    instructor_feedback: InstructorFeedback | None
-    hours_per_week: HoursPerWeek
-    recommendation_strength: RecommendationStrength
-    reasons_for_enrollment: ReasonsForEnrollment
-    most_students_open_minded: AgreementDistribution
-    comfortable_expressing_views: AgreementDistribution 
+    response_rate: ResponseRate | None
+    course_feedback: CourseFeedback | None
+    instructor_feedback: list[InstructorFeedback] = Field(default_factory=list)
+
+    @field_validator("instructor_feedback", mode="before")
+    @classmethod
+    def _coerce_instructor_feedback(cls, v):
+        if v is None:
+            return []
+        if isinstance(v, dict):
+            return [v]
+        return v
+    hours_per_week: HoursPerWeek | None
+    recommendation_strength: RecommendationStrength | None
+    reasons_for_enrollment: ReasonsForEnrollment | None
+    most_students_open_minded: AgreementDistribution | None
+    comfortable_expressing_views: AgreementDistribution | None
     comments: list[Comment] = Field(default_factory=list)
 
 class School(enum.Enum):
@@ -189,6 +205,7 @@ class QGuideListing:
     instructor: str | None
     qguide_id: str
     url: str
+    semester: Semester | None = None
 
 class QGuideURLs(BaseModel):
     semester: Semester

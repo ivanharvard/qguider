@@ -1,3 +1,4 @@
+import dataclasses
 import json
 import re
 from pathlib import Path
@@ -13,6 +14,7 @@ from requests.exceptions import RequestException
 
 from .parser import QGuideParser
 from .models import QGuideListing, QGuideURLs
+from .agg import QGuideSet
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +23,7 @@ COURSE_RE = re.compile(
     ^
     (?P<subject>.+?)
     \s+
-    (?P<number>[A-Z0-9]+)
+    (?P<number>[A-Z0-9.]+)
     -
     (?P<title>.*?)
     \s+
@@ -59,8 +61,13 @@ class Downloader:
                 response = self._get_with_retries(
                     client,
                     self.BASE_URL,
-                    params={"school": school.code, "calTerm": str(semester)},
+                    params={"school": school.code, "calTerm": semester.to_qguide_term()},
                 )
+
+                logger.debug("Index response URL: %s", response.url)
+                logger.debug("Index HTML length: %d", len(response.text))
+                logger.debug("Index dept cards: %d", len(BeautifulSoup(response.text, "html.parser").select("div.card.term")))
+                logger.debug("Index qguide anchors: %d", response.text.count("SelectedIDforPrint="))
 
                 if response.status_code != 200:
                     raise ValueError(
@@ -69,7 +76,17 @@ class Downloader:
                     )
 
                 listings = self.parse_index_html(response.text)
+
+                logger.debug("Raw listings: %d", len(listings))
+                logger.debug("Query departments: %r", self.query._departments)
+                logger.debug("Query subjects: %r", self.query._subjects)
+                logger.debug("Query classes: %r", self.query._classes)
+                logger.debug("Query instructor: %r", self.query._instructor_last_name)
+                logger.debug("Query search: %r", self.query._search_term)
+
+
                 listings = self._filter_listings(listings)
+                listings = [dataclasses.replace(l, semester=semester) for l in listings]
 
                 logger.info("Found %d QGuide listings after filtering.", len(listings))
 
@@ -95,6 +112,8 @@ class Downloader:
 
         if progress:
             task_id = progress.add_task("Downloading QGuides", total=len(all_items))
+
+        failed_files = set()
 
         if redownload_failed:
             if not parse_failed_path:
@@ -129,7 +148,7 @@ class Downloader:
 
                 if outpath.exists() and outpath.stat().st_size > 0 and not should_redownload:
                     logger.info("Skipping existing QGuide file: %s", outpath)
-                    self.downloaded_files.append(outpath)
+                    self.downloaded_files.append((listing, outpath))
                     continue
 
                 if should_redownload:
@@ -175,7 +194,7 @@ class Downloader:
                 with open(outpath, "w", encoding="utf-8") as f:
                     f.write(response.text)
 
-                self.downloaded_files.append(outpath)
+                self.downloaded_files.append((listing, outpath))
                 since_checkpoint += 1
 
                 if checkpoint and since_checkpoint >= checkpoint_interval:
@@ -200,7 +219,7 @@ class Downloader:
         checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(checkpoint_path, "w", encoding="utf-8") as f:
-            json.dump([str(p) for p in self.downloaded_files], f, indent=2)
+            json.dump([str(p) for _, p in self.downloaded_files], f, indent=2)
         logger.info("Checkpoint saved (%d files) → %s", len(self.downloaded_files), checkpoint_path)
 
     def _report_failed(self) -> None:
@@ -215,7 +234,7 @@ class Downloader:
         url: str,
         *,
         params: dict | None = None,
-        max_retries: int = 5,
+        max_retries: int = 3,
         timeout: tuple[int, int] = (5, 30),
     ) -> requests.Response:
         for attempt in range(max_retries):
@@ -304,7 +323,7 @@ class Downloader:
 
             for a in dept_card.select("a[href][id]"):
                 href = a["href"]
-                if "my-harvard-bc.bluera.com/rpv-eng.aspx" not in href:
+                if "rpv-eng.aspx" not in href:
                     continue
 
                 if "SelectedIDforPrint=" not in href:
@@ -333,15 +352,24 @@ class Downloader:
         results = []
         failed = []
 
-        for file in self.downloaded_files:
+        progress = getattr(self.query, "_progress", None)
+        task_id = None
+
+        if progress:
+            task_id = progress.add_task("Parsing QGuides", total=len(self.downloaded_files))
+
+        for listing, file in self.downloaded_files:
             try:
-                results.append(QGuideParser(file).parse())
+                results.append(QGuideParser(file, listing=listing).parse())
             except Exception as e:
-                logger.warning("Failed to parse %s: %s", file, e)
+                logger.warning("Failed to parse %s: %s: %s", file, type(e).__name__, e)
                 failed.append((file, type(e).__name__, str(e)))
 
                 if not skip_failed:
                     raise
+            finally:
+                if progress and task_id is not None:
+                    progress.advance(task_id)
 
         if failed:
             failed_path = Path(self.query._outpath) / "parse_failed.json"
@@ -361,7 +389,7 @@ class Downloader:
 
             logger.warning("Wrote %d parse failure(s) to %s", len(failed), failed_path)
 
-        return results
+        return QGuideSet(results)
     
     def _filter_listings(
         self,

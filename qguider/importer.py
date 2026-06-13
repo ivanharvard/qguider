@@ -1,22 +1,14 @@
 from pathlib import Path
 import json
 from .models import QGuide
+from .agg import QGuideSet
 
 
-def from_json(qguide_json: str | Path) -> list[QGuide]:
-    """
-    Load a QGuide object from a JSON file.
-
-    Args:
-        qguide_json: Path to the JSON file containing the QGuide data.
-
-    Returns:
-        A list of QGuide objects.
-    """
+def from_json(qguide_json: str | Path) -> QGuideSet:
     if isinstance(qguide_json, str):
         qguide_json = Path(qguide_json)
 
     with open(qguide_json, "r", encoding="utf-8") as f:
         qguides_data = json.load(f)
 
-    return [QGuide.model_validate(qguide_data) for qguide_data in qguides_data]
+    return QGuideSet([QGuide.model_validate(d) for d in qguides_data])

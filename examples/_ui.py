@@ -28,7 +28,7 @@ def make_rich_ui(log_level: str = "INFO"):
 
     layout = Layout()
     layout.split_column(
-        Layout(Panel(progress), name="progress", size=3),
+        Layout(Panel(progress), name="progress", size=5),
         Layout(Panel("", title="Logs"), name="logs"),
     )
 
