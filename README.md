@@ -1,5 +1,8 @@
 # QGuider
 
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/qguider?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/qguider)
+![MIT License Shield](https://img.shields.io/badge/license-MIT-blue)
+
 QGuider is a Python library for downloading, parsing, and querying Harvard QGuides — the university's course evaluation reports. It scrapes QGuide HTML pages, normalizes the data into typed Pydantic models, and provides a fluent API for filtering and exporting results.
 
 ## Features
