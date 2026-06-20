@@ -61,10 +61,11 @@ class Query:
         self, 
         checkpoint=False, 
         checkpoint_interval=50,
-        report_failed=False
+        report_failed=False,
+        sleep_for_sec: int | tuple[int, int] = 0
     ) -> None:
         downloader = Downloader(self)
-        return downloader.download(checkpoint, checkpoint_interval, report_failed)
+        return downloader.download(checkpoint, checkpoint_interval, report_failed, sleep_for_sec)
 
     def run(
         self, 
