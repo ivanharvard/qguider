@@ -34,7 +34,7 @@ def configure_logging(level: str = "INFO"):
     root.addHandler(handler)
     root.setLevel(getattr(logging, level.upper(), logging.INFO))
 
-def download_all(progress = None, agg = False):
+def download_all(progress = None, agg = False, sleep_for_sec = 0):
     qgdr = qguider.QGuider(creds=".env")
 
     results = (
@@ -52,7 +52,8 @@ def download_all(progress = None, agg = False):
         .download(
             checkpoint=True,
             checkpoint_interval=15,
-            report_failed=True
+            report_failed=True,
+            sleep_for_sec=sleep_for_sec
         )
         .parse(
             skip_failed=True,
@@ -89,6 +90,14 @@ def clear_all():
     shutil.rmtree("qguider_data", ignore_errors=True)
     print("Cleared all downloaded data.")
 
+def _parse_sleep_arg(value: str) -> float | tuple[float, float]:
+    if "," in value:
+        parts = value.split(",")
+        if len(parts) != 2:
+            raise argparse.ArgumentTypeError("Range must be two comma-separated values, e.g. 2.5,5.0")
+        return (float(parts[0]), float(parts[1]))
+    return float(value)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download and parse QGuides")
     parser.add_argument("--import", dest="do_import", action="store_true")
@@ -98,6 +107,16 @@ if __name__ == "__main__":
     parser.add_argument("--no-agg", action="store_true")
     parser.add_argument("--clear-all", action="store_true")
     parser.add_argument("--log-level", default="INFO")
+    parser.add_argument(
+        "--sleep-for-sec",
+        default=0,
+        type=_parse_sleep_arg,
+        help="Set an exact value or a random interval of seconds to sleep "
+             "between requests and retries when downloading."
+             "\nExample:\n"
+             "\n--sleep-for-sec 4"
+             "\n--sleep-for-sec 2.5,5.0"
+    )
 
     args = parser.parse_args()
 
@@ -109,7 +128,11 @@ if __name__ == "__main__":
 
         with Live(layout, console=console, refresh_per_second=10):
             if args.download:
-                download_all(progress=progress, agg=not args.no_agg)
+                download_all(
+                    progress=progress, 
+                    agg=not args.no_agg,
+                    sleep_for_sec=args.sleep_for_sec
+                )
 
             if args.parse:
                 parse_all(progress=progress)
@@ -120,7 +143,11 @@ if __name__ == "__main__":
         configure_logging(args.log_level)
 
         if args.download:
-            download_all(progress=None, agg=not args.no_agg)
+            download_all(
+                progress=None, 
+                agg=not args.no_agg, 
+                sleep_for_sec=args.sleep_for_sec
+            )
 
         if args.parse:
             parse_all(progress=None)

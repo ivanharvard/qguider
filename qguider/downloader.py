@@ -271,13 +271,13 @@ class Downloader:
         raise RuntimeError("unreachable")
 
 
-    def _sleep_between_requests(self, range: float | tuple[float, float]) -> None:
-        if isinstance(range, tuple):
-            sleep_for = random.uniform(*range)
+    def _sleep_between_requests(self, delay: float | tuple[float, float]) -> None:
+        if isinstance(delay, tuple):
+            sleep_for = random.uniform(*delay)
         else:
-            sleep_for = float(range)
+            sleep_for = float(delay)
 
-        logger.debug("Sleeping %.2fs before next request.", sleep_for)
+        logger.debug("Sleeping %.2fs.", sleep_for)
         time.sleep(sleep_for)
 
 

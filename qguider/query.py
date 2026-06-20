@@ -58,25 +58,26 @@ class Query:
         return self
     
     def download(
-        self, 
-        checkpoint=False, 
+        self,
+        checkpoint=False,
         checkpoint_interval=50,
         report_failed=False,
-        sleep_for_sec: int | tuple[int, int] = 0
+        sleep_for_sec: float | tuple[float, float] = 0
     ) -> None:
         downloader = Downloader(self)
-        return downloader.download(checkpoint, checkpoint_interval, report_failed, sleep_for_sec)
+        return downloader.download(checkpoint, checkpoint_interval, report_failed, sleep_for_sec=sleep_for_sec)
 
     def run(
-        self, 
-        checkpoint=False, 
-        checkpoint_interval=50, 
-        report_failed=False, 
-        skip_failed=False
+        self,
+        checkpoint=False,
+        checkpoint_interval=50,
+        report_failed=False,
+        skip_failed=False,
+        sleep_for_sec: float | tuple[float, float] = 0
     ):
         return (
             self
-            .download(checkpoint, checkpoint_interval, report_failed)
+            .download(checkpoint, checkpoint_interval, report_failed, sleep_for_sec)
             .parse(skip_failed)
         )
 
