@@ -35,9 +35,11 @@ QGuider requires your Harvard Key credentials to access the QGuide portal.
 1. Login to [Harvard QGuide Portal](https://qreports.fas.harvard.edu/browse/index).
 2. Either (press F12 on your keyboard) or (right click anywhere on the page, and click `Inspect`).
 3. Press the arrow pointing to the right, and then click on `Application`.
-![Inspect Element](images/inspect.png)
+
+![[Image of how to access Inspect Element]](images/inspect.png)
 4. Under Storage, find Cookies, and under Cookies, find the option that looks like `https://qreports.fas.har...`
-![Cookies](images/cookies.png)
+
+![[Image of how to access cookies]](images/cookies.png)
 5. Find the row that's labeled `SESSION`. In that row, double click the cell under the column `Value`. Copy it to your clipboard.
 6. Create a `.env` file in your working directory if it does not already exist:
 ```
@@ -87,7 +89,8 @@ Chain filters before downloading:
 | Method | Description |
 |---|---|
 | `.semesters("Fall 2024", ...)` | Filter by one or more semesters |
-| `.subjects("CS", "MATH", ...)` | Filter by subject code |
+| `.years("2023-24")` | Filter by one or more academic year (HMS only) |
+| `.subjects("COMPSCI", "MATH", ...)` | Filter by subject code |
 | `.departments("Computer Science", ...)` | Filter by department name |
 | `.instructor_last_name("Smith")` | Filter by instructor last name |
 | `.search("algorithms")` | Free-text search |
