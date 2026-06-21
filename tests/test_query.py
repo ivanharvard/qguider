@@ -25,9 +25,9 @@ def test_qguider_semesters(query):
     ]
 
 def test_qguider_schools(query):
-    query.schools("FAS", "SEAS")
+    query.schools("FAS", "GSE")
 
-    assert query._schools == [qguider.models.School.FAS]
+    assert query._schools == [qguider.models.School.FAS, qguider.models.School.GSE]
 
 def test_qguider_subjects(query):
     query.subjects("COMPSCI", "MATH")

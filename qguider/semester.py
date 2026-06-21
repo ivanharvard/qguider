@@ -9,16 +9,26 @@ from pydantic import BaseModel
 
 class Season(str, enum.Enum):
     """
-    The four academic seasons.
+    Academic term seasons across all supported Harvard schools.
 
     Also a str subclass so Pydantic accepts plain strings like "Fall"
     without a custom validator.
+
+    Sub-semester variants (spring_1, fall_2, etc.) are used by schools
+    that run multiple sessions within a season (e.g. SPH).
     """
 
-    winter = "Winter"
-    spring = "Spring"
-    summer = "Summer"
-    fall = "Fall"
+    january  = "January"
+    spring   = "Spring"
+    spring_1 = "Spring 1"
+    spring_2 = "Spring 2"
+    june     = "June"
+    summer   = "Summer"
+    summer_1 = "Summer 1"
+    summer_2 = "Summer 2"
+    fall     = "Fall"
+    fall_1   = "Fall 1"
+    fall_2   = "Fall 2"
 
     @classmethod
     def from_string(cls, value: str) -> Season:
@@ -45,7 +55,14 @@ class Season(str, enum.Enum):
 
 
 # Canonical ordering used by Semester._step for arithmetic across season/year boundaries.
-_SEASON_ORDER = [Season.winter, Season.spring, Season.summer, Season.fall]
+# Wrapping from fall_2 back to january increments the year.
+_SEASON_ORDER = [
+    Season.january,
+    Season.spring, Season.spring_1, Season.spring_2,
+    Season.june,
+    Season.summer, Season.summer_1, Season.summer_2,
+    Season.fall, Season.fall_1, Season.fall_2,
+]
 
 
 class School(enum.Enum):
@@ -57,12 +74,44 @@ class School(enum.Enum):
     to skip irrelevant seasons when stepping or ranging.
     """
 
-    FAS    = ("FAS",    "Faculty of Arts and Sciences",               frozenset({Season.spring, Season.fall}))
-    SEAS   = ("SEAS",   "School of Engineering and Applied Sciences", frozenset({Season.spring, Season.fall}))
-    GSE    = ("GSE",    "Graduate School of Education",               frozenset({Season.spring, Season.fall}))
-    HMS    = ("HMS",    "Harvard Medical School",                     frozenset({Season.spring, Season.fall}))
-    SPH    = ("SPH",    "Harvard T.H. Chan School of Public Health",  frozenset({Season.spring, Season.fall}))
-    SUMMER = ("Summer", "Summer School",                              frozenset({Season.summer}))
+    FAS = (
+        "FAS",    
+        "Faculty of Arts and Sciences",               
+        frozenset({Season.spring, Season.fall})
+    )
+    GSE = (
+        "GSE",
+        "Graduate School of Education",
+        frozenset({Season.january, Season.spring, Season.fall})
+    )
+    # HMS uses academic year format (e.g. "2023-24") rather than named seasons
+    # and is not navigable via SemesterCalendar.
+    HMS = (
+        "HMS",    
+        "Harvard Medical School",
+        frozenset()
+    )
+    SPH = (
+        "SPH",    
+        "Harvard T.H. Chan School of Public Health",  
+        frozenset({
+            Season.january,
+            Season.spring, Season.spring_1, Season.spring_2,
+            Season.june,
+            Season.summer, Season.summer_1, Season.summer_2,
+            Season.fall, Season.fall_1, Season.fall_2,
+        })
+    )
+    HKS = (
+        "HKS",   
+        "Harvard Kennedy School",
+        frozenset({Season.january, Season.spring, Season.fall})
+    )
+    SUMMER = (
+        "Summer", 
+        "Summer School",
+        frozenset({Season.summer})
+    )
 
     def __init__(self, code: str, description: str, seasons: frozenset):
         self.code = code
@@ -129,7 +178,7 @@ class Semester(BaseModel):
         Derive the semester that contains a given calendar date.
 
         Mapping:
-            Jan          -> Winter
+            Jan          -> January
             Feb - May    -> Spring
             Jun - Aug    -> Summer
             Sep - Dec    -> Fall
@@ -141,7 +190,7 @@ class Semester(BaseModel):
             Semester: The semester containing that date.
         """
         if d.month == 1:
-            season = Season.winter
+            season = Season.january
         elif d.month <= 5:
             season = Season.spring
         elif d.month <= 8:
@@ -273,7 +322,15 @@ class SemesterCalendar:
 
         Returns:
             SemesterCalendar: A new calendar anchored to the latest valid semester.
+
+        Raises:
+            ValueError: If the school has no navigable seasons (e.g. HMS).
         """
+        if not self._school.seasons:
+            raise ValueError(
+                f"{self._school.code} uses a term format that is not supported "
+                "by SemesterCalendar."
+            )
         current = Semester.from_date(as_of or date.today())
         while current.season not in self._school.seasons:
             current = current._step(-1)
@@ -400,3 +457,50 @@ class SemesterRange:
             SemesterRange: A new range with the matching semesters removed.
         """
         return SemesterRange([s for s in self._semesters if not predicate(s)])
+
+
+class AcademicYear:
+    """
+    An HMS academic year term spanning two consecutive calendar years.
+
+    HMS terms are formatted as "YYYY-YY" (e.g. "2023-24") rather than the
+    season-based format used by other schools.
+
+    Use Query.years() rather than Query.semesters() when querying HMS.
+    """
+
+    def __init__(self, start: int, end: int):
+        """
+        Args:
+            start (int): The starting calendar year (e.g. 2023).
+            end (int): The ending calendar year. Must be start + 1.
+
+        Raises:
+            ValueError: If end != start + 1.
+        """
+        if end != start + 1:
+            raise ValueError(
+                f"AcademicYear end must be start + 1, got {start}-{end}."
+            )
+        self.start = start
+        self.end = end
+
+    def to_qguide_term(self) -> str:
+        """
+        Format this academic year as expected by the HMS QGuide API.
+
+        Returns:
+            str: e.g. "2023-24"
+        """
+        return f"{self.start}-{str(self.end)[2:]}"
+
+    def __repr__(self) -> str:
+        return f"AcademicYear({self.to_qguide_term()})"
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, AcademicYear):
+            raise NotImplemented
+        return self.start == other.start and self.end == other.end
+
+    def __hash__(self) -> int:
+        return hash((self.start, self.end))
