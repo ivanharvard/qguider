@@ -3,6 +3,7 @@ from pathlib import Path
 from types import NoneType
 
 from .models import Semester, School
+from .semester import SemesterCalendar, SemesterRange, AcademicYear
 from .downloader import Downloader
 
 logger = logging.getLogger(__name__)
@@ -14,6 +15,7 @@ class Query:
 
         self._schools = [School.FAS]
         self._semesters = []
+        self._years = []
         self._subjects = []
         self._departments = []
         self._classes = []
@@ -23,15 +25,43 @@ class Query:
         self._progress = False
 
     def semesters(self, *args):
+        if School.HMS in self._schools:
+            raise ValueError(
+                "Use .years() instead of .semesters() when querying HMS."
+            )
         sems = self._unpack(*args)
         self._semesters = [self._coerce(sem, Semester) for sem in sems]
-
         return self
 
-    def schools(self, *_args):
-        logging.warning("Only FAS is currently supported. Ignoring schools argument.")
-        self._schools = [School.FAS]
+    def years(self, *args):
+        if School.HMS not in self._schools:
+            raise ValueError(
+                "Use .years() only when querying HMS. "
+                "Call .schools(School.HMS) first."
+            )
+        if self._semesters:
+            raise ValueError(
+                "Cannot set years when semesters are already set."
+            )
+        years = self._unpack(*args)
+        self._years = [self._coerce(y, AcademicYear) for y in years]
+        return self
 
+    def schools(self, *args):
+        schools = [self._coerce(s, School) for s in self._unpack(*args)]
+        is_hms = School.HMS in schools
+        if is_hms and len(schools) > 1:
+            raise ValueError("HMS cannot be combined with other schools in one query.")
+        if is_hms and self._semesters:
+            raise ValueError(
+                "Cannot set school to HMS when semesters are already set. "
+                "Use .years() for HMS."
+            )
+        if not is_hms and self._years:
+            raise ValueError(
+                "Cannot set a non-HMS school when years are already set."
+            )
+        self._schools = schools
         return self
     
     def subjects(self, *args):
@@ -93,12 +123,15 @@ class Query:
         """
         Unpacks arguments, i.e., foo("a", "b", "c") and foo(["a", "b", "c"]).
         """
-        if len(args) == 1 and isinstance(args[0], (list, tuple)):
+        if len(args) == 1 and isinstance(args[0], (list, tuple, SemesterRange)):
             return args[0]
         return args
-    
+
     def _coerce(self, value, target_type):
         try:
+            if target_type is Semester and isinstance(value, SemesterCalendar):
+                return value.semester
+
             if isinstance(value, target_type):
                 return value
 

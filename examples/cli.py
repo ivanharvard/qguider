@@ -3,6 +3,7 @@ import qguider
 import logging
 from pathlib import Path
 from examples._ui import make_rich_ui
+from qguider.semester import Semester
 import shutil
 
 
@@ -41,12 +42,7 @@ def download_all(progress = None, agg = False, sleep_for_sec = 0):
         qgdr
         .query()
         .semesters(
-            "Fall 2023",
-            "Spring 2024",
-            "Fall 2024",
-            "Spring 2025",
-            "Fall 2025",
-            "Spring 2026",
+            Semester.for_school().latest().range(back=5)
         )
         .progress(progress)
         .download(

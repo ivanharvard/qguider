@@ -1,6 +1,8 @@
 import qguider
 import pytest
+from datetime import date
 from pathlib import Path
+from qguider.semester import Semester, Season
 
 def test_qguider_args():
     qgdr = qguider.QGuider(creds=".env")
@@ -14,17 +16,18 @@ def query():
     return qguider.QGuider(creds=".env").query()
 
 def test_qguider_semesters(query):
-    query.semesters("Fall 2020", "Spring 2021")
+    cal = Semester.for_school().latest(as_of=date(2021, 3, 1))
+    query.semesters(cal.range(back=1))
 
     assert query._semesters == [
-        qguider.models.Semester(season="Fall", year=2020),
-        qguider.models.Semester(season="Spring", year=2021),
+        Semester(season=Season.spring, year=2021),
+        Semester(season=Season.fall, year=2020),
     ]
 
 def test_qguider_schools(query):
-    query.schools("FAS", "SEAS")
+    query.schools("FAS", "GSE")
 
-    assert query._schools == [qguider.models.School.FAS]
+    assert query._schools == [qguider.models.School.FAS, qguider.models.School.GSE]
 
 def test_qguider_subjects(query):
     query.subjects("COMPSCI", "MATH")
