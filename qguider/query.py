@@ -3,6 +3,7 @@ from pathlib import Path
 from types import NoneType
 
 from .models import Semester, School
+from .semester import SemesterCalendar, SemesterRange
 from .downloader import Downloader
 
 logger = logging.getLogger(__name__)
@@ -93,12 +94,15 @@ class Query:
         """
         Unpacks arguments, i.e., foo("a", "b", "c") and foo(["a", "b", "c"]).
         """
-        if len(args) == 1 and isinstance(args[0], (list, tuple)):
+        if len(args) == 1 and isinstance(args[0], (list, tuple, SemesterRange)):
             return args[0]
         return args
-    
+
     def _coerce(self, value, target_type):
         try:
+            if target_type is Semester and isinstance(value, SemesterCalendar):
+                return value.semester
+
             if isinstance(value, target_type):
                 return value
 
