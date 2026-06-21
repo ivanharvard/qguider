@@ -14,7 +14,7 @@ from requests.exceptions import RequestException
 
 from .parser import QGuideParser
 from .models import QGuideListing, QGuideURLs
-from .agg import QGuideSet
+from .collections import QGuideSet
 
 logger = logging.getLogger(__name__)
 
