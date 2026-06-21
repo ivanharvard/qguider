@@ -34,7 +34,7 @@ class QGuideSet:
             raise ValueError(f"Unknown aggregation key: {by!r}. Expected one of: {valid}")
         return QGuideSet(_merge_by_field(self._qguides, by))
 
-    def filter(self, predicate: Callable[[QGuide], Any | bool]) -> QGuideSet:
+    def filter(self, predicate: Callable[[QGuide], Any | bool]) -> "QGuideSet":
         return QGuideSet([q for q in self._qguides if predicate(q)])
 
 def _merge_by_field(qguides: list[QGuide], field: str) -> list[QGuide]:
