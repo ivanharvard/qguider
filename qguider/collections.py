@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Iterator
+from typing import Iterator, Callable, Any
 
 from .models import QGuide
 
@@ -32,8 +32,10 @@ class QGuideSet:
         if by not in QGuide.model_fields:
             valid = list(QGuide.model_fields.keys())
             raise ValueError(f"Unknown aggregation key: {by!r}. Expected one of: {valid}")
-        return QGuideSet(_merge_by_field(self._guides, by))
+        return QGuideSet(_merge_by_field(self._qguides, by))
 
+    def filter(self, predicate: Callable[[QGuide], Any | bool]) -> QGuideSet:
+        return QGuideSet([q for q in self._qguides if predicate(q)])
 
 def _merge_by_field(qguides: list[QGuide], field: str) -> list[QGuide]:
     groups: dict = defaultdict(list)
