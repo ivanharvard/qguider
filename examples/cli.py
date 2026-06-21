@@ -117,8 +117,16 @@ if __name__ == "__main__":
              "\n--sleep-for-sec 4"
              "\n--sleep-for-sec 2.5,5.0"
     )
+    parser.add_argument(
+        "--quiet", 
+        action="store_true", 
+        help="Suppress INFO log output (sets log level to WARNING)"
+    )
 
     args = parser.parse_args()
+
+    if args.quiet:
+        args.log_level = "WARNING"
 
     if args.clear_all:
         clear_all()
