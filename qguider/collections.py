@@ -7,38 +7,38 @@ from .models import QGuide
 
 
 class QGuideSet:
-    def __init__(self, guides: list[QGuide]):
-        self._guides = guides
+    def __init__(self, qguides: list[QGuide]):
+        self._qguides = qguides
 
     def __iter__(self) -> Iterator[QGuide]:
-        return iter(self._guides)
+        return iter(self._qguides)
 
     def __len__(self) -> int:
-        return len(self._guides)
+        return len(self._qguides)
 
     def __repr__(self) -> str:
-        return f"QGuideSet({len(self._guides)} guides)"
+        return f"QGuideSet({len(self._qguides)} QGuides)"
 
     def __getitem__(self, index):
-        return self._guides[index]
+        return self._qguides[index]
 
     def agg(self, by: str = "id") -> "QGuideSet":
         """
-        Aggregate QGuides by a grouping key.
+        Aggregate QGuides by any field on QGuide.
 
-        by="id"  — group by qguide_id, merging instructor_feedback across
-                   entries that share the same ID (same course offering,
-                   multiple instructors).
+        Merges instructor_feedback, comments, and course aliases across
+        entries that share the same value for the given field.
         """
-        if by == "id":
-            return QGuideSet(_merge_by_id(self._guides))
-        raise ValueError(f"Unknown aggregation key: {by!r}. Expected 'id'.")
+        if by not in QGuide.model_fields:
+            valid = list(QGuide.model_fields.keys())
+            raise ValueError(f"Unknown aggregation key: {by!r}. Expected one of: {valid}")
+        return QGuideSet(_merge_by_field(self._guides, by))
 
 
-def _merge_by_id(guides: list[QGuide]) -> list[QGuide]:
-    groups: dict[str, list[QGuide]] = defaultdict(list)
-    for g in guides:
-        groups[g.id].append(g)
+def _merge_by_field(qguides: list[QGuide], field: str) -> list[QGuide]:
+    groups: dict = defaultdict(list)
+    for g in qguides:
+        groups[getattr(g, field)].append(g)
 
     result = []
     for group in groups.values():

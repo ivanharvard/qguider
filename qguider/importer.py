@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 from .models import QGuide
-from .agg import QGuideSet
+from .collections import QGuideSet
 
 
 def from_json(qguide_json: str | Path) -> QGuideSet:
