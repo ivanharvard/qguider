@@ -189,8 +189,8 @@ class QGuideParser:
             good=_pct(cells[4]),
             fair=_pct(cells[5]),
             unsatisfactory=_pct(cells[6]),
-            course_mean=_pct(cells[7]),
-            fas_mean=_pct(cells[8]),
+            course_mean=_float(cells[7]),
+            fas_mean=_float(cells[8]),
         )
 
     def _likert_rows_by_question(self, block: Tag) -> dict[str, LikertDistribution]:
