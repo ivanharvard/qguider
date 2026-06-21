@@ -86,7 +86,7 @@ class School(enum.Enum):
         """
         value = value.strip().upper()
         for member in cls:
-            if member.code == value or member.description.upper() == value:
+            if member.code.upper() == value or member.description.upper() == value:
                 return member
         raise ValueError(
             f"Invalid school: {value!r}. "
@@ -151,7 +151,7 @@ class Semester(BaseModel):
         return cls(season=season, year=d.year)
 
     @classmethod
-    def for_school(cls, school: School = School.FAS) -> SemesterCalendar:
+    def for_school(cls, school: School | str = School.FAS) -> SemesterCalendar:
         """
         Entry point for the fluent calendar API.
 
@@ -160,17 +160,40 @@ class Semester(BaseModel):
         navigating.
 
         Args:
-            school (School): The school whose valid seasons define navigation.
-                Defaults to School.FAS.
+            school (School | str): The school whose valid seasons define
+                navigation. Accepts a School member or a string code (e.g.
+                "FAS"). Defaults to School.FAS.
 
         Returns:
             SemesterCalendar: An unanchored calendar scoped to the given school.
 
         Example:
             Semester.for_school().latest().range(back=4)
-            Semester.for_school(School.SUMMER).latest() - 1
+            Semester.for_school("SUMMER").latest() - 1
         """
+        if isinstance(school, str):
+            school = School.from_string(school)
         return SemesterCalendar(school)
+
+    @classmethod
+    def latest(cls, as_of: date | None = None) -> SemesterCalendar:
+        """
+        Shorthand for Semester.for_school().latest().
+
+        Returns a SemesterCalendar anchored to the most recent FAS semester,
+        without needing an explicit for_school() call.
+
+        Args:
+            as_of (date | None): Reference date. Defaults to today.
+
+        Returns:
+            SemesterCalendar: A calendar anchored to the latest FAS semester.
+
+        Example:
+            Semester.latest().range(back=4)
+            Semester.latest() - 2
+        """
+        return cls.for_school().latest(as_of=as_of)
 
     def _step(self, n: int) -> Semester:
         # Moves n positions through _SEASON_ORDER, carrying over the year when
@@ -218,6 +241,10 @@ class SemesterCalendar:
     def __init__(self, school: School, _current: Semester | None = None):
         self._school = school
         self._current = _current
+
+    def __repr__(self) -> str:
+        current = str(self._current) if self._current else "unanchored"
+        return f"SemesterCalendar({self._school.code}, {current})"
 
     @property
     def semester(self) -> Semester:
