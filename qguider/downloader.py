@@ -49,6 +49,7 @@ class Downloader:
         report_failed: bool = False,
         redownload_failed: bool = True,
         parse_failed_path: str | Path | None = "qguider_data/parse_failed.json",
+        sleep_for_sec: float | tuple[float, float] = 0
     ):
         client = self._make_client()
         qguide_urls = []
@@ -163,7 +164,7 @@ class Downloader:
                     listing.url,
                 )
 
-                self._sleep_between_requests()
+                self._sleep_between_requests(sleep_for_sec)
 
                 try:
                     response = self._get_with_retries(client, listing.url)
@@ -259,30 +260,24 @@ class Downloader:
                 if attempt == max_retries - 1:
                     raise
 
-                sleep_for = (2 ** attempt) + random.uniform(0, 1)
+                sleep_for_sec = (2 ** attempt) + random.uniform(0, 1)
                 logger.warning(
-                    "Request failed for %s; retrying in %.1fs: %s",
+                    "Request failed for %s: %s",
                     url,
-                    sleep_for,
                     e,
                 )
-                time.sleep(sleep_for)
+                self._sleep_between_requests(sleep_for_sec)
 
         raise RuntimeError("unreachable")
 
 
-    def _sleep_between_requests(self, range: tuple[float, float] = (0, 0)) -> None:
-        delay = getattr(self.query, "_request_delay", range)
-
-        if delay is None:
-            return
-
+    def _sleep_between_requests(self, delay: float | tuple[float, float]) -> None:
         if isinstance(delay, tuple):
             sleep_for = random.uniform(*delay)
         else:
             sleep_for = float(delay)
 
-        logger.debug("Sleeping %.2fs before next request.", sleep_for)
+        logger.debug("Sleeping %.2fs.", sleep_for)
         time.sleep(sleep_for)
 
 
