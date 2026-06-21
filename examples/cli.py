@@ -98,8 +98,12 @@ if __name__ == "__main__":
     parser.add_argument("--no-agg", action="store_true")
     parser.add_argument("--clear-all", action="store_true")
     parser.add_argument("--log-level", default="INFO")
+    parser.add_argument("--quiet", action="store_true", help="Suppress INFO log output (sets log level to WARNING)")
 
     args = parser.parse_args()
+
+    if args.quiet:
+        args.log_level = "WARNING"
 
     if args.clear_all:
         clear_all()
